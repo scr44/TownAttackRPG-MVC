@@ -1,0 +1,32 @@
+﻿Most keywords can be mixed in any combination. Organization is simply based on most common arrangements.
+
+==Conditions==
+"Status Condition"
+
+==Buffs==
+"Positive Effect"
+"Heal"
+"Heal Over Time"
+"Max Health Increase"
+"Max Stamina Increase"
+"Stamina Restore"
+
+==Debuffs==
+"Negative Effect"
+"Damage"
+"Damage Over Time"
+"Max HP Decrease"
+"Max Stamina Decrease"
+"Stamina Damage"
+
+==Behavior==
+"Stacking Duration"
+"Stacking Instances"
+"Trigger on Start"
+"Trigger on Expiry"
+"Infinite Duration"
+"Attribute Modifier"
+"Talent Modifier"
+"Cannot Be Removed"
+"No Effect if Removed Early"
+"Unique" : Can only have one instance of the effect active at a time

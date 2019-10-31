@@ -1,0 +1,10 @@
+[
+  {
+    "ItemID": 0,
+    "ItemName": "Coins",
+    "ItemDescrip": "",
+    "Value": 1,
+    "Weight": 0.0,
+    "MaxStackSize": 5000
+  }
+]

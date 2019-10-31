@@ -1,0 +1,26 @@
+﻿These can be mixed and matched without restriction, but are sorted into the most common groupings.
+
+"Weapon"
+"Sword"
+"Dagger"
+"Axe"
+"Blunt"
+
+"Paired"
+"Can2H"
+
+"Armor"
+"Light"
+"Medium"
+"Heavy"
+"Cloth"
+"Leather"
+"Metal"
+"Shield"
+
+"Charm"
+"Cursed"
+"Jewelry"
+
+"Unbreakable"
+"Broken"
