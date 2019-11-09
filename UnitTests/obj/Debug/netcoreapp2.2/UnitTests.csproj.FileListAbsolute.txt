@@ -19,3 +19,26 @@ C:\Users\SRoy\Documents\git\TownAttackRPG\UnitTests\obj\Debug\netcoreapp2.2\Unit
 C:\Users\SRoy\Documents\git\TownAttackRPG\UnitTests\obj\Debug\netcoreapp2.2\UnitTests.pdb
 C:\Users\SRoy\Documents\git\TownAttackRPG\UnitTests\bin\Debug\netcoreapp2.2\Models\Items\Database\Equipment.json
 C:\Users\SRoy\Documents\git\TownAttackRPG\UnitTests\bin\Debug\netcoreapp2.2\Models\Items\Database\Item.json
+E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\UnitTests\bin\Debug\netcoreapp2.2\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\UnitTests\bin\Debug\netcoreapp2.2\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\UnitTests\bin\Debug\netcoreapp2.2\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\UnitTests\bin\Debug\netcoreapp2.2\TownAttackRPG.Views.dll
+E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\UnitTests\bin\Debug\netcoreapp2.2\TownAttackRPG.Views.pdb
+E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\UnitTests\bin\Debug\netcoreapp2.2\appsettings.Development.json
+E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\UnitTests\bin\Debug\netcoreapp2.2\appsettings.json
+E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\UnitTests\bin\Debug\netcoreapp2.2\Properties\launchSettings.json
+E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\UnitTests\bin\Debug\netcoreapp2.2\UnitTests.deps.json
+E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\UnitTests\bin\Debug\netcoreapp2.2\UnitTests.runtimeconfig.json
+E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\UnitTests\bin\Debug\netcoreapp2.2\UnitTests.runtimeconfig.dev.json
+E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\UnitTests\bin\Debug\netcoreapp2.2\UnitTests.dll
+E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\UnitTests\bin\Debug\netcoreapp2.2\UnitTests.pdb
+E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\UnitTests\bin\Debug\netcoreapp2.2\TownAttackRPG.dll
+E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\UnitTests\bin\Debug\netcoreapp2.2\TownAttackRPG.pdb
+E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\UnitTests\obj\Debug\netcoreapp2.2\UnitTests.csprojAssemblyReference.cache
+E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\UnitTests\obj\Debug\netcoreapp2.2\UnitTests.AssemblyInfoInputs.cache
+E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\UnitTests\obj\Debug\netcoreapp2.2\UnitTests.AssemblyInfo.cs
+E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\UnitTests\obj\Debug\netcoreapp2.2\UnitTests.csproj.CopyComplete
+E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\UnitTests\obj\Debug\netcoreapp2.2\UnitTests.dll
+E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\UnitTests\obj\Debug\netcoreapp2.2\UnitTests.pdb
+E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\UnitTests\bin\Debug\netcoreapp2.2\DAL\JsonData\Equipment.json
+E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\UnitTests\bin\Debug\netcoreapp2.2\DAL\JsonData\Item.json

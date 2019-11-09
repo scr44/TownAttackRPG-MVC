@@ -8,12 +8,7 @@ namespace TownAttackRPG.Controllers
 {
     public class LoadGameController : Controller
     {
-        public IActionResult SavedGames()
-        {
-            return View();
-        }
-
-        public IActionResult RunSavedGame(int savedGame)
+        public IActionResult Index()
         {
             return View();
         }

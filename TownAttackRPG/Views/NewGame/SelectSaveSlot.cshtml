@@ -1,0 +1,36 @@
+﻿@model TownAttackRPG.Models.ViewModels.NewGame.SelectSaveVM
+@{
+    ViewData["Title"] = "SelectSaveSlot";
+}
+
+<h1>SelectSaveSlot</h1>
+
+<div class="game-window">
+    @foreach (var saveGame in Model.SaveList)
+    {
+        if (saveGame.ActiveScenario != null)
+        {
+            var pc = saveGame.ActiveScenario.PlayerCharacter;
+
+            <form method="post" asp-action="SelectSaveSlot">
+                <input type="hidden" asp-for="Slot" value="@saveGame.SaveGameSlot" />
+                <button class="save-slot-card" type="submit">
+                    <header>Save Game @saveGame.SaveGameSlot</header>
+                    <content>Scenario: @saveGame.ActiveScenario.Name</content>
+                    <content>@pc.Name</content>
+                    <content>Lvl @pc.XP.Level @pc.Profession.Title</content>
+                </button>
+            </form>
+        }
+        else
+        {
+            <form method="post" asp-action="SelectSaveSlot">
+                <input type="hidden" asp-for="Slot" value="@saveGame.SaveGameSlot" />
+                <button class="save-slot-card" type="submit">
+                    <header>Save Game @saveGame.SaveGameSlot</header>
+                    <content>Empty</content>
+                </button>
+            </form>
+        }
+    }
+</div>

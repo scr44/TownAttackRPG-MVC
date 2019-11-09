@@ -1,0 +1,18 @@
+﻿@model TownAttackRPG.Models.ViewModels.Main.NameAndGenderVM
+@{
+    ViewData["Title"] = "NameAndGender";
+    string[] GenderOptions = new[] { "Male", "Female" };
+}
+
+<h1>NameAndGender</h1>
+
+<div class="game-window">
+    <form method="post" asp-action="NameAndGender">
+        <input type="text" asp-for="Name" placeholder="Enter your name." />
+        @foreach (var gender in GenderOptions)
+        {
+            <input type="radio" asp-for="Gender" value="@gender[0]" />@gender
+        }
+        <input type="submit" value="Next" />
+    </form>
+</div>

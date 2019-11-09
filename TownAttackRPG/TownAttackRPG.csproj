@@ -5,22 +5,46 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="ConsoleProgramFiles\**" />
+    <Content Remove="ConsoleProgramFiles\**" />
+    <EmbeddedResource Remove="ConsoleProgramFiles\**" />
+    <None Remove="ConsoleProgramFiles\**" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.4" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
   </ItemGroup>
 
 
   <ItemGroup>
-    <Content Update="Models\Items\Database\Equipment.json">
+    <Content Update="DAL\JsonData\Equipment.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Models\Items\Database\Item.json">
+    <Content Update="DAL\JsonData\Item.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Update="DAL\JsonData\SaveGame1.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="DAL\JsonData\SaveGame2.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="DAL\JsonData\SaveGame3.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Models\Scenarios\Tutorial\Combat\" />
+    <Folder Include="Models\ViewModels\Main\" />
+    <Folder Include="Models\ViewModels\LoadGame\" />
+    <Folder Include="Models\ViewModels\Game\" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,54 @@
+﻿@model TownAttackRPG.Models.ViewModels.NewGame.ProfessionVM
+@{
+    ViewData["Title"] = "Profession";
+}
+
+<h1>Profession</h1>
+
+<div class="game-window">
+    @foreach(var prof in Model.ProfessionList)
+    { 
+        <form method="post" asp-action="Profession">
+            <input type="hidden" asp-for="ProfessionChoice" value="@prof.Title" />
+            <button class="profession-card @(prof.Title == "Pony" ? "secret-card" : "")" type="submit">
+                <h1 class="profession-title">@prof.Title</h1>
+                <p class="profession-summary">@prof.ProfessionSummary</p>
+                <div class="profession-starting-stats">
+                    <section class="attributes">
+                        <header>Attributes</header>
+                        @foreach (var att in prof.StartingAttributesDict)
+                        {
+                            <p>@(att.Key): @att.Value</p>
+                        }
+                    </section>
+                    <section class="talents">
+                        <header>Talents</header>
+                        @foreach (var tal in prof.StartingTalentsDict)
+                        {
+                            <p>@(tal.Key): @tal.Value</p>
+                        }
+                    </section>
+                    <section class="starting-equipment">
+                        <header>Starting Equipment</header>
+                        @foreach (var item in prof.StartingEquipmentDict)
+                        {
+                            if (!item.Value.EquipmentTags.Contains("None"))
+                            {
+                                <p>@item.Value.ItemName</p>
+                            }
+                        }
+                    </section>
+                    <section class="starting-items">
+                        <header>Starting Items</header>
+                        @foreach (var item in prof.StartingInventoryDict)
+                        {
+                            <p>@(item.Key.ItemName): @("x"+item.Value)</p>
+                        }
+                    </section>
+                </div>
+                <p class="profession-tips"></p>
+            </button>
+        </form>
+    }
+    
+</div>

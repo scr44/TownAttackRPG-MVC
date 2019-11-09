@@ -39,16 +39,16 @@ namespace TownAttackRPG.Models.Professions.DefaultProfessions
             };
             StartingInventoryDict = new Dictionary<Item, int>()
             {
-                { Item.CreateNew("Item", "Coins"), 500 },
+                { ItemDAO.CreateNewItem("Coins"), 500 },
                 // singed portrait
             };
             StartingEquipmentDict = new Dictionary<string, EquipmentItem>()
             {
-                { "MainHand", (EquipmentItem)Item.CreateNew("Equipment","Bare Hand") }, // Hoof
-                { "OffHand", (EquipmentItem)Item.CreateNew("Equipment","Bare Hand") }, // Hoof
-                { "Body", (EquipmentItem)Item.CreateNew("Equipment","Naked") }, // Shiny Fur Coat
-                { "Charm 1", (EquipmentItem)Item.CreateNew("Equipment","Unadorned") }, // Flower Ornament
-                { "Charm 2", (EquipmentItem)Item.CreateNew("Equipment","Unadorned") } // Tail Bow
+                { "MainHand", ItemDAO.CreateNewEquipmentItem("Bare Hand") }, // Hoof
+                { "OffHand", ItemDAO.CreateNewEquipmentItem("Bare Hand") }, // Hoof
+                { "Body", ItemDAO.CreateNewEquipmentItem("Naked") }, // Shiny Fur Coat
+                { "Charm 1", ItemDAO.CreateNewEquipmentItem("Unadorned") }, // Flower Ornament
+                { "Charm 2", ItemDAO.CreateNewEquipmentItem("Unadorned") } // Tail Bow
             };
         }
     }

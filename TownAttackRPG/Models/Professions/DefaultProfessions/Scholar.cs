@@ -40,16 +40,16 @@ namespace TownAttackRPG.Models.Professions.DefaultProfessions
             };
             StartingInventoryDict = new Dictionary<Item, int>()
             {
-                { Item.CreateNew("Item", "Coins"), 400 },
+                { ItemDAO.CreateNewItem("Coins"), 400 },
                 { new Diploma(), 1 }
             };
             StartingEquipmentDict = new Dictionary<string, Items.Equipment.EquipmentItem>()
             {
-                { "MainHand", (EquipmentItem)Item.CreateNew("Equipment","Bare Hand") },
-                { "OffHand", (EquipmentItem)Item.CreateNew("Equipment","History Tome") },
-                { "Body", (EquipmentItem)Item.CreateNew("Equipment","Clothing") },
-                { "Charm 1", (EquipmentItem)Item.CreateNew("Equipment","QuillAndInkwell") },
-                { "Charm 2", (EquipmentItem)Item.CreateNew("Equipment","Unadorned") }
+                { "MainHand", ItemDAO.CreateNewEquipmentItem("Bare Hand") },
+                { "OffHand", ItemDAO.CreateNewEquipmentItem("History Tome") },
+                { "Body", ItemDAO.CreateNewEquipmentItem("Clothing") },
+                { "Charm 1", ItemDAO.CreateNewEquipmentItem("Quill and Inkwell") },
+                { "Charm 2", ItemDAO.CreateNewEquipmentItem("Unadorned") }
             };
         }
     }

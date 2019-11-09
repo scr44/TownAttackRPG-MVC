@@ -8,16 +8,25 @@ using TownAttackRPG.Models.Items.VendorTrash;
 using TownAttackRPG.Models.Professions.DefaultProfessions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using TownAttackRPG.DAL.Interfaces;
+using TownAttackRPG.DAL.DAOs.Json;
 
 namespace Characters
 {
     [TestClass]
     public class CharacterCreation
     {
-        // Create a female Knight named Guinevere
-        public Character Guinevere = new Character("Guinevere", new Knight("F"));
-        // Create a male Knight named Valerian
-        public Character Valerian = new Character("Valerian", new Knight("M"));
+        Character Guinevere { get; set; }
+        Character Valerian { get; set; }
+
+        [TestInitialize]
+        public void Initializer()
+        {
+            // Create a female Knight named Guinevere
+            Guinevere = new Character("Guinevere", new Knight("F"));
+            // Create a male Knight named Valerian
+            Valerian = new Character("Valerian", new Knight("M"));
+        }
 
         [TestMethod]
         public void HasGivenName()
@@ -81,6 +90,13 @@ namespace Characters
     [TestClass]
     public class InventoryBehavior
     {
+        const string jsonPath = @"./DAL/JsonData";
+        protected IItemDAO ItemDAO { get; set; }
+        public InventoryBehavior()
+        {
+            ItemDAO = new ItemJsonDAO(jsonPath);
+        }
+
         [TestMethod]
         public void AddingItems()
         {
@@ -91,7 +107,7 @@ namespace Characters
 
             for (int i = 0; i < 5; i++)
             {
-                inventory.AddItem(Item.CreateNew("Equipment", "Longsword"));
+                inventory.AddItem(ItemDAO.CreateNewEquipmentItem("Longsword"));
             }
 
             Assert.IsTrue(inventory.InventoryContents.Count == 1, "Inventory should only have one actual Longsword object stored.");
@@ -104,7 +120,7 @@ namespace Characters
             // generate new inventory with 5000 coins in it.
             Dictionary<Item, int> init = new Dictionary<Item, int>()
             {
-                { Item.CreateNew("Item","Coins"), 5000 }
+                { ItemDAO.CreateNewItem("Coins"), 5000 }
             };
             Inventory inventory = new Inventory(init);
 
@@ -157,7 +173,7 @@ namespace Characters
         public void CharacterOverburdened()
         {
             Character Guinevere = new Character("Guinevere", new Knight("F"));
-            Guinevere.Inventory.AddItem((EquipmentItem)Item.CreateNew("Equipment", "Plate Armor"), 5);
+            Guinevere.Inventory.AddItem(ItemDAO.CreateNewEquipmentItem( "Plate Armor"), 5);
             Assert.IsTrue(Guinevere.Inventory.IsOverburdened,
                 "Character should be overburdened when Weight > Weight Capacity.");
         }
@@ -165,6 +181,13 @@ namespace Characters
     [TestClass]
     public class EquipmentBehavior
     {
+        const string jsonPath = @"./DAL/JsonData";
+        protected IItemDAO ItemDAO { get; set; }
+        public EquipmentBehavior()
+        {
+            ItemDAO = new ItemJsonDAO(jsonPath);
+        }
+
         [TestMethod]
         public void Toggle2HFunctionality()
         {
@@ -194,7 +217,7 @@ namespace Characters
                 "Character should start off two-handing their weapon.");
 
             // Add a new longsword to their inventory
-            Guinevere.Inventory.AddItem(Item.CreateNew("Equipment", "Longsword"));
+            Guinevere.Inventory.AddItem(ItemDAO.CreateNewEquipmentItem("Longsword"));
 
             // Equip the Longsword in the OffHand slot, have to cast it back out of Item
             Guinevere.Equipment.Equip("OffHand", (EquipmentItem)Guinevere.Inventory.InventoryContents["Longsword"]);
@@ -236,7 +259,7 @@ namespace Characters
         {
             Character Guinevere = new Character("Guinevere", new Knight("F"));
 
-            EquipmentItem brokenSword = (EquipmentItem)Item.CreateNew("Equipment", "Longsword");
+            EquipmentItem brokenSword = ItemDAO.CreateNewEquipmentItem("Longsword");
 
             Guinevere.Inventory.AddItem(brokenSword);
 
@@ -276,7 +299,13 @@ namespace Characters
     [TestClass]
     public class HealthAndStamina
     {
-        public Character Guinevere = new Character("Guinevere", new Knight("F"));
+        Character Guinevere { get; set; }
+
+        [TestInitialize]
+        public void Initializer()
+        {
+            Guinevere = new Character("Guinevere", new Knight("F"));
+        }
 
         [TestMethod]
         public void HPLoss()
@@ -364,13 +393,19 @@ namespace Characters
     [TestClass]
     public class LevelAndExperience
     {
+        Character Guinevere { get; set; }
+
+        [TestInitialize]
+        public void Initializer()
+        {
+            Guinevere = new Character("Guinevere", new Knight("F"));
+            // Change knight's APT to 5 (2 + 3), the base level
+            Guinevere.Attributes.AdjustAttribute("APT", 3);
+        }
+
         [TestMethod]
         public void GainXP()
         {
-            Character Guinevere = new Character("Guinevere", new Knight("F"));
-            // Change knight's APT to 5 (2 + 3), the base level
-            Guinevere.Attributes.AdjustAttribute("APT", 3);
-
             Assert.AreEqual(1, Guinevere.XP.Level,
                 "New character should start at lvl 1.");
             Assert.AreEqual(0, Guinevere.XP.Current,
@@ -389,10 +424,6 @@ namespace Characters
         [TestMethod]
         public void LevelingUp()
         {
-            Character Guinevere = new Character("Guinevere", new Knight("F"));
-            // Change knight's APT to 5 (2 + 3), the base level
-            Guinevere.Attributes.AdjustAttribute("APT", 3);
-            Guinevere.XP.GainXP(50);
             Guinevere.XP.GainXP(Guinevere.XP.Needed);
 
             Assert.AreEqual(2, Guinevere.XP.Level,
@@ -453,10 +484,16 @@ namespace Characters
     [TestClass]
     public class Miscellaneous
     {
+        Character Guinevere { get; set; }
+        [TestInitialize]
+        public void Initializer()
+        {
+            Guinevere = new Character("Guinevere", new Knight("F"));
+        }
+
         [TestMethod]
         public void CheckIfActorIsCharacter()
         {
-            Character Guinevere = new Character("Guinevere", new Knight("F"));
             List<Actor> list = new List<Actor> { Guinevere };
             Assert.IsTrue(list[0] is Actor);
             Assert.IsTrue(list[0] is Character);

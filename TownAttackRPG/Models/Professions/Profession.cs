@@ -7,19 +7,26 @@ using TownAttackRPG.Models.Skills;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using TownAttackRPG.DAL.Interfaces;
+using TownAttackRPG.DAL.DAOs.Json;
 
 namespace TownAttackRPG.Models.Professions
 {
     abstract public class Profession
     {
+        #region Constructor
+        const string jsonPath = @"./DAL/JsonData";
+        protected IItemDAO ItemDAO { get; set; }
+
         public Profession()
         {
-            
+            ItemDAO = new ItemJsonDAO(jsonPath);
         }
+        #endregion
 
         #region Tags
         public string Title { get; protected set; }
-        public string Gender { get; protected set; }
+        public string Gender { get; set; }
         public string GetGender(string gender)
         {
             gender = gender.ToLower();
@@ -67,20 +74,8 @@ namespace TownAttackRPG.Models.Professions
             { "Engineering", 0 },
             { "History", 0 }
         };
-        public Dictionary<Item, int> StartingInventoryDict { get; protected set; } =
-            new Dictionary<Item, int>()
-            {
-
-            };
-        public Dictionary<string, EquipmentItem> StartingEquipmentDict { get; protected set; } =
-            new Dictionary<string, EquipmentItem>()
-            {
-                { "MainHand", (EquipmentItem)Item.CreateNew("Equipment","Bare Hand") },
-                { "OffHand", (EquipmentItem)Item.CreateNew("Equipment","Two-handing") },
-                { "Body", (EquipmentItem)Item.CreateNew("Equipment","Naked") },
-                { "Charm 1", (EquipmentItem)Item.CreateNew("Equipment","Unadorned") },
-                { "Charm 2", (EquipmentItem)Item.CreateNew("Equipment","Unadorned") }
-            };
+        public Dictionary<Item, int> StartingInventoryDict { get; protected set; }
+        public Dictionary<string, EquipmentItem> StartingEquipmentDict { get; protected set; }
         public List<Skill> StartingSkills = new List<Skill>(6) { null, null, null, null, null, null };
         #endregion
     }

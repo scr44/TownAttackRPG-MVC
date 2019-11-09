@@ -5,13 +5,21 @@ using TownAttackRPG.Models.Items.Equipment;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using TownAttackRPG.DAL.Interfaces;
+using TownAttackRPG.DAL.DAOs.Json;
 
 namespace TownAttackRPG.Models.Actors.Characters
 {
     public class Equipment
     {
         #region Constructors
-        public Equipment() { }
+        const string jsonPath = @"./DAL/JsonData";
+        protected IItemDAO ItemDAO { get; set; }
+
+        public Equipment()
+        {
+            ItemDAO = new ItemJsonDAO(jsonPath);
+        }
         public Equipment(Character character, EquipmentItem main, EquipmentItem off, 
             EquipmentItem body, EquipmentItem charm1, EquipmentItem charm2)
         {
@@ -22,11 +30,15 @@ namespace TownAttackRPG.Models.Actors.Characters
             Slot["Charm 2"] = charm2;
 
             AttachedCharacter = character;
+
+            ItemDAO = new ItemJsonDAO(jsonPath);
         }
         public Equipment(Character character, Dictionary<string, EquipmentItem> initDict)
         {
             AttachedCharacter = character;
             this.Slot = initDict;
+
+            ItemDAO = new ItemJsonDAO(jsonPath);
         }
         #endregion
 
@@ -45,15 +57,7 @@ namespace TownAttackRPG.Models.Actors.Characters
         /// <summary>
         /// The set of equipment slots and equipped items.
         /// </summary>
-        public Dictionary<string, EquipmentItem> Slot { get; private set; } =
-            new Dictionary<string, EquipmentItem>()
-            {
-                { "MainHand", (EquipmentItem)Item.CreateNew( "Equipment", "Bare Hand") },
-                { "OffHand", (EquipmentItem)Item.CreateNew( "Equipment", "Bare Hand") },
-                { "Body", (EquipmentItem)Item.CreateNew("Equipment", "Naked") },
-                { "Charm 1", (EquipmentItem)Item.CreateNew("Equipment", "Unadorned") },
-                { "Charm 2", (EquipmentItem)Item.CreateNew("Equipment", "Unadorned") }
-            };
+        public Dictionary<string, EquipmentItem> Slot { get; private set; }
         public List<string> AllEquipmentTags
         {
             get
@@ -113,7 +117,7 @@ namespace TownAttackRPG.Models.Actors.Characters
                 if (Can2H)
                 {
                     Unequip("OffHand");
-                    Slot["OffHand"] = (EquipmentItem)Item.CreateNew("Equipment","Two-handing");
+                    Slot["OffHand"] = ItemDAO.CreateNewEquipmentItem("Two-handing");
                 }
                 // if can't 2H the main weapon, do nothing
             }
@@ -207,15 +211,15 @@ namespace TownAttackRPG.Models.Actors.Characters
             // The actual slot unequip
             if(slot == "MainHand" || slot == "OffHand")
             {
-                Slot[slot] = (EquipmentItem)Item.CreateNew("Equipment", "Bare Hand");
+                Slot[slot] = ItemDAO.CreateNewEquipmentItem( "Bare Hand");
             }
             else if (slot == "Body")
             {
-                Slot[slot] = (EquipmentItem)Item.CreateNew("Equipment","Naked");
+                Slot[slot] = ItemDAO.CreateNewEquipmentItem("Naked");
             }
             else if (slot.StartsWith("Charm"))
             {
-                Slot[slot] = (EquipmentItem)Item.CreateNew("Equipment","Unadorned");
+                Slot[slot] = ItemDAO.CreateNewEquipmentItem("Unadorned");
             }
             else
             {

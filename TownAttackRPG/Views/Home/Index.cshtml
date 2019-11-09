@@ -1,18 +1,8 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
-    int savedgame = 1; // TODO Main Menu: determine last played game
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to Town Attack RPG</h1>
-</div>
-
-<div>
-    <ul>
-        @if((int)ViewData["SavedGames"] > 0)
-        { <li><a asp-controller="LoadGame" asp-action="RunSavedGame" asp-route-savedGame="@savedgame">Continue</a></li>}
-        <li><a asp-controller="NewGame" asp-action="Scenario">New Game</a></li>
-        <li><a asp-controller="LoadGame" asp-action="SavedGames">Load Game</a></li>
-        <li><a asp-controller="Options" asp-action="Index">Options</a></li>
-    </ul>
+<div class="splash-screen-box">
+    <h1>TOWN ATTACK</h1>
+    <h3><a asp-controller="Main" asp-action="Index">Start Game</a></h3>
 </div>

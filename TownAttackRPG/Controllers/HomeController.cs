@@ -12,12 +12,11 @@ namespace TownAttackRPG.Controllers
     {
         public IActionResult Index()
         {
-            ViewData["SavedGames"] = 1; // TODO Main Menu: check for existing saved games
             // Splash Screen
-            // Select new game, load game, options
             return View();
         }
 
+        #region Defaults
         public IActionResult Privacy()
         {
             return View();
@@ -28,5 +27,6 @@ namespace TownAttackRPG.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        #endregion
     }
 }

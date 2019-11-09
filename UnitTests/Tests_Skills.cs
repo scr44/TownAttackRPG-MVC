@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using System.Text;
 using TownAttackRPG.Models.Items.Equipment;
 using TownAttackRPG.Models.Items;
+using TownAttackRPG.DAL.Interfaces;
+using TownAttackRPG.DAL.DAOs.Json;
 
 namespace Skills
 {
@@ -64,12 +66,24 @@ namespace Skills
     [TestClass]
     public class Requirements
     {
+        const string jsonPath = @"./DAL/JsonData";
+        protected IItemDAO ItemDAO { get; set; }
+        public Requirements()
+        {
+            ItemDAO = new ItemJsonDAO(jsonPath);
+        }
+        Character Guinevere { get; set; }
+
+        [TestInitialize]
+        public void Initializer()
+        {
+            // create a knight
+            Guinevere = new Character("Guinevere", new Knight("F"));
+        }
+
         [TestMethod]
         public void CheckProfession()
         {
-            // create a knight
-            Character Guinevere = new Character("Guinevere", new Knight("F"));
-
             // create a footman
             Character Gilliam = new Character("Gilliam", new Footman("M"));
 
@@ -106,9 +120,6 @@ namespace Skills
         [TestMethod]
         public void CheckStatReq()
         {
-            // create a knight
-            Character Guinevere = new Character("Guinevere", new Knight("F"));
-
             // create another knight and make him too weak to meet the req
             Character Gilliam = new Character("Gilliam", new Knight("M"));
             Gilliam.Attributes.SetAttribute("STR", 1);
@@ -142,8 +153,7 @@ namespace Skills
         [TestMethod]
         public void Check2HReq()
         {
-            // create a knight and a training dummy
-            Character Guinevere = new Character("Guinevere", new Knight("F"));
+            // create a training dummy
             TrainingDummy Dummy = new TrainingDummy(100, 0, 0);
 
             // knight should be able to use double slash
@@ -174,8 +184,7 @@ namespace Skills
         [TestMethod]
         public void CheckEquipReq()
         {
-            // create a knight and a training dummy
-            Character Guinevere = new Character("Guinevere", new Knight("F"));
+            // create a training dummy
             TrainingDummy Dummy = new TrainingDummy(100, 0, 0);
 
             // knight should be able to use double slash
@@ -190,7 +199,7 @@ namespace Skills
             }
 
             // replace the knight's sword with a book and 2H it (lol)
-            Guinevere.Inventory.AddItem((EquipmentItem)Item.CreateNew("Equipment", "History Tome"));
+            Guinevere.Inventory.AddItem(ItemDAO.CreateNewEquipmentItem( "History Tome"));
             Guinevere.Equipment.Equip("MainHand",Guinevere.Inventory.InventoryContents["History Tome"]);
             Guinevere.Equipment.Toggle2H();
 

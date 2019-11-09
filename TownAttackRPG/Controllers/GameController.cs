@@ -8,9 +8,31 @@ namespace TownAttackRPG.Controllers
 {
     public class GameController : Controller
     {
-        public IActionResult Index(string scenario=null, string character=null)
+        public IActionResult Index()
         {
             return View();
         }
+
+        #region Dialogue
+        [HttpGet]
+        public IActionResult DialogueResponses(int DialogueVMIndex)
+        {
+            // make new DialogueVM with module dialogues
+            return View();
+        }
+        [HttpPost]
+        public IActionResult DialogueResponses(string placeholderForDialogueVM)
+        {
+            if(!ModelState.IsValid)
+            {
+                return View();
+            }
+            else
+            {
+                int chosenResponse = 0; // pick response from module dialogue responses
+                return RedirectToAction("DialogueResponses", chosenResponse);
+            }
+        }
+        #endregion
     }
 }
