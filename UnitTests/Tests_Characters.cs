@@ -96,6 +96,12 @@ namespace Characters
         {
             ItemDAO = new ItemJsonDAO(jsonPath);
         }
+        Character Guinevere { get; set; }
+        [TestInitialize]
+        public void Initializer()
+        {
+            Guinevere = new Character("Guinevere", new Knight("F"));
+        }
 
         [TestMethod]
         public void AddingItems()
@@ -134,22 +140,20 @@ namespace Characters
                 "Inventory should have 2500 coins available");
         }
 
-        public Character Guinevere = new Character("Guinevere", new Knight("F"));
-
         [TestMethod]
         public void CharacterRemovesItem()
         {
             Assert.IsTrue(Guinevere.Inventory.Contains("Memento"),
                 "Knights should start with a Memento in their inventories.");
             Guinevere.Inventory.RemoveItem(ItemDAO.CreateNewItem("Memento"));
-            Assert.IsFalse(Guinevere.Inventory.Items.Contains(ItemDAO.CreateNewItem("Memento")),
+            Assert.IsFalse(Guinevere.Inventory.Contains("Memento"),
                 "The Memento should be removed.");
         }
         [TestMethod]
         public void CharacterAddsItem()
         {
-            Guinevere.Inventory.AddItem(new Memento());
-            Assert.IsTrue(Guinevere.Inventory.Items.Contains(ItemDAO.CreateNewItem("Memento")),
+            Guinevere.Inventory.AddItem(ItemDAO.CreateNewItem("Memento"));
+            Assert.AreEqual(2, Guinevere.Inventory.ItemCounts["Memento"],
                 "A new Memento should be added to the character's inventory.");
         }
         [TestMethod]
@@ -256,11 +260,10 @@ namespace Characters
             Character Guinevere = new Character("Guinevere", new Knight("F"));
 
             EquipmentItem brokenSword = ItemDAO.CreateNewEquipmentItem("Longsword");
-
-            Guinevere.Inventory.AddItem(brokenSword);
-
             brokenSword.ItemName = "Broken Sword";
             brokenSword.DamageEquipment(100);
+
+            Guinevere.Inventory.AddItem(brokenSword);
 
             Assert.IsTrue(brokenSword.Condition == 0, 
                 "Broken weapon's durability should be 0.");

@@ -102,11 +102,11 @@ namespace TownAttackRPG.Models.Actors.ActorProperties
         {
             get
             {
-                List<Item> nonMaxStacks = (List<Item>)(
-                                              from i in Items
-                                              where i.StackSize < i.MaxStackSize
-                                              select i);
-                return nonMaxStacks;
+                List<Item> nonMaxStacks = (from i in Items
+                                           where i.StackSize < i.MaxStackSize
+                                           select i).ToList<Item>();
+                List<Item> result = nonMaxStacks ?? new List<Item>();
+                return result;
             }
         }
 
@@ -123,9 +123,7 @@ namespace TownAttackRPG.Models.Actors.ActorProperties
         }
         public Item GetFirstItemInstance(string itemName)
         {
-            Item item = ItemDAO.CreateNewItem(itemName);
-            int index = Items.FindIndex(i => (i.ItemID == item.ItemID)
-                                          && (i.ItemName == item.ItemName));
+            int index = Items.FindIndex(i => i.ItemName == itemName);
             return Items[index];
         }
         /// <summary>
@@ -211,6 +209,15 @@ namespace TownAttackRPG.Models.Actors.ActorProperties
                     // Otherwise, remove the appropriate number of items from the stack and end
                     Items[index].StackSize -= count;
                     count = 0;
+                }
+
+                // Dangerous list multiremoval in a single loop
+                for (int j = Items.Count() - 1; j > 0; j--)
+                {
+                    if (Items[j].StackSize == 0)
+                    {
+                        Items.RemoveAt(j);
+                    }
                 }
             }
         }

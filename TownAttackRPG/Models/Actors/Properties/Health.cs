@@ -4,6 +4,7 @@ using TownAttackRPG.Models.Professions;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace TownAttackRPG.Models.Actors.Characters.Stats
 {
@@ -14,6 +15,7 @@ namespace TownAttackRPG.Models.Actors.Characters.Stats
          by their profession, while Enemy and NPC HP is set at Actor intialization. Most armor increases 
          max health, and many skill effects can temporarily grant extra max HP or restore lost HP.
         */
+        [JsonConstructor]
         public Health(Actor actor)
         {
             if (actor is Character)

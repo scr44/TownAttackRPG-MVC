@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Text;
 using TownAttackRPG.DAL.Interfaces;
 using TownAttackRPG.DAL.DAOs.Json;
+using System.Linq;
 
 namespace TownAttackRPG.Models.Actors.Characters
 {
@@ -48,6 +49,10 @@ namespace TownAttackRPG.Models.Actors.Characters
         {
             get
             {
+                if (AttachedCharacter is null)
+                {
+                    return null;
+                }
                 return AttachedCharacter.Inventory;
             }
         }
@@ -57,12 +62,25 @@ namespace TownAttackRPG.Models.Actors.Characters
         /// <summary>
         /// The set of equipment slots and equipped items.
         /// </summary>
-        public Dictionary<string, EquipmentItem> Slot { get; private set; }
+        public Dictionary<string, EquipmentItem> Slot { get; private set; } = new Dictionary<string, EquipmentItem>()
+        {
+            { "MainHand", null },
+            { "OffHand", null },
+            { "Body", null },
+            { "Charm 1", null },
+            { "Charm 2", null }
+        };
         public List<string> AllEquipmentTags
         {
             get
             {
-                var equipment = Slot.Values;
+                var equipmentValues = Slot.Values;
+                List<EquipmentItem> equipment = equipmentValues.ToList<EquipmentItem>();
+                if (equipment.Contains(null))
+                {
+                    return null;
+                }
+
                 List<string> tags = new List<string>();
 
                 foreach (EquipmentItem item in equipment)
@@ -134,15 +152,24 @@ namespace TownAttackRPG.Models.Actors.Characters
         {
             foreach(KeyValuePair<string, double> req in item.ReqStats)
             {
-                if(AttachedCharacter.Attributes.ModdedValue.ContainsKey(req.Key)
+                if (AttachedCharacter.Attributes.ModdedValue.ContainsKey(req.Key)
                     && req.Value > AttachedCharacter.Attributes.ModdedValue[req.Key])
                 {
                     return false;
                 }
-                if(AttachedCharacter.Talents.ModdedValue.ContainsKey(req.Key)
+                if (AttachedCharacter.Talents.ModdedValue.ContainsKey(req.Key)
                     && req.Value > AttachedCharacter.Talents.ModdedValue[req.Key])
                 {
                     return false;
+                }
+                if ((item.EquipmentTags.Contains("NotEquippable") 
+                  || item.EquipmentTags.Contains("Broken")))
+                {
+                    return false;
+                }
+                if (!(item is EquipmentItem))
+                {
+                    return false; // if the item isn't equipment, return false.
                 }
             }
             return true;
@@ -164,37 +191,30 @@ namespace TownAttackRPG.Models.Actors.Characters
                 return false;  // can't equip an item that's not in the inventory
             }
 
-            if ( !(item is EquipmentItem) )
-            {
-                return false; // if the item isn't equipment, return false.
-            }
+            EquipmentItem equipmentItem = (EquipmentItem)item;
 
-            EquipmentItem equipment = (EquipmentItem)item;
-
-            if (  equipment.ValidSlots[slot] == true
-             &&   MeetsItemReq(equipment)
-             && !(equipment.EquipmentTags.Contains("NotEquippable"))
-             && !(equipment.EquipmentTags.Contains("Broken")))
+            if (  equipmentItem.ValidSlots[slot] == true
+             &&   MeetsItemReq(equipmentItem))
             {
-                EquipmentItem priorEquipment = Slot[slot]; // Hold the prior equipped item,
+                EquipmentItem priorEquipment = Slot[slot];     // Hold the prior equipped item,
                 AttachedInventory.RemoveItem(item);
-                Slot[slot] = equipment;                    // and equip the new item.
-                                                           // If the slot was empty,
+                Slot[slot] = equipmentItem;                    // and equip the new item.
+                                                               // If the slot was empty,
                 if (priorEquipment.EquipmentTags.Contains("None"))    
                 {
-                    RefreshHpSpOnEquip(priorEquipment, equipment);
-                    return true;                           // return true because the equip succeeded.
+                    RefreshHpSpOnEquip(priorEquipment, equipmentItem);
+                    return true;                               // return true because the equip succeeded.
                 }
-                else                                       // If the slot had equipment,
+                else                                           // If the slot had equipment,
                 {
-                    AttachedInventory.AddItem(equipment);  // add the prior item to the attached inventory
-                    RefreshHpSpOnEquip(priorEquipment, equipment);
-                    return true;                           // and return true because the equip succeeded.
+                    AttachedInventory.AddItem(equipmentItem);  // add the prior item to the attached inventory
+                    RefreshHpSpOnEquip(priorEquipment, equipmentItem);
+                    return true;                               // and return true because the equip succeeded.
                 }
             }
-            else                                           // If invalid slot, non-equippable item, or broken equipment,
+            else                                               // If invalid slot, non-equippable item, or broken equipment,
             {
-                return false;                              // don't equip the item, and return false because the equip failed.
+                return false;                                  // don't equip the item, and return false because the equip failed.
             }
         }
         #endregion

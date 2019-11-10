@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace TownAttackRPG.Models.Actors.SkillCollections
 {
@@ -13,6 +14,7 @@ namespace TownAttackRPG.Models.Actors.SkillCollections
             Skill Empty = new EmptySkill(Self);
             Skills = new List<Skill>(6) { Empty, Empty, Empty, Empty, Empty, Empty };
         }
+        [JsonConstructor]
         public Skillbar(Actor self, List<Skill> skills)
         {
             Self = self;

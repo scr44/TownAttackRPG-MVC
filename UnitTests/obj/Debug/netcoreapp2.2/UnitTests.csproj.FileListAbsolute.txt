@@ -17,8 +17,6 @@ C:\Users\SRoy\Documents\git\TownAttackRPG\UnitTests\bin\Debug\netcoreapp2.2\Town
 C:\Users\SRoy\Documents\git\TownAttackRPG\UnitTests\obj\Debug\netcoreapp2.2\UnitTests.csproj.CopyComplete
 C:\Users\SRoy\Documents\git\TownAttackRPG\UnitTests\obj\Debug\netcoreapp2.2\UnitTests.dll
 C:\Users\SRoy\Documents\git\TownAttackRPG\UnitTests\obj\Debug\netcoreapp2.2\UnitTests.pdb
-C:\Users\SRoy\Documents\git\TownAttackRPG\UnitTests\bin\Debug\netcoreapp2.2\Models\Items\Database\Equipment.json
-C:\Users\SRoy\Documents\git\TownAttackRPG\UnitTests\bin\Debug\netcoreapp2.2\Models\Items\Database\Item.json
 E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\UnitTests\bin\Debug\netcoreapp2.2\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
 E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\UnitTests\bin\Debug\netcoreapp2.2\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
 E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\UnitTests\bin\Debug\netcoreapp2.2\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll

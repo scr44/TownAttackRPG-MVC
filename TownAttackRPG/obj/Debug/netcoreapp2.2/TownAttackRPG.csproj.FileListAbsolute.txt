@@ -28,12 +28,6 @@ C:\Users\SRoy\Documents\git\TownAttackRPG\TownAttackRPG\obj\Debug\netcoreapp2.2\
 C:\Users\SRoy\Documents\git\TownAttackRPG\TownAttackRPG\obj\Debug\netcoreapp2.2\TownAttackRPG.dll
 C:\Users\SRoy\Documents\git\TownAttackRPG\TownAttackRPG\obj\Debug\netcoreapp2.2\TownAttackRPG.pdb
 C:\Users\SRoy\Documents\git\TownAttackRPG\TownAttackRPG\obj\Debug\netcoreapp2.2\TownAttackRPG.csproj.CopyComplete
-C:\Users\SRoy\Documents\git\TownAttackRPG\TownAttackRPG\bin\Debug\netcoreapp2.2\Models\Items\Database\Equipment.json
-C:\Users\SRoy\Documents\git\TownAttackRPG\TownAttackRPG\bin\Debug\netcoreapp2.2\Models\Items\Database\Item.json
-C:\Users\SRoy\Documents\git\TownAttackRPG\TownAttackRPG\obj\Debug\netcoreapp2.2\Razor\Views\NewGame\Scenario.g.cshtml.cs
-C:\Users\SRoy\Documents\git\TownAttackRPG\TownAttackRPG\obj\Debug\netcoreapp2.2\Razor\Views\NewGame\CharacterCreation.g.cshtml.cs
-C:\Users\SRoy\Documents\git\TownAttackRPG\TownAttackRPG\obj\Debug\netcoreapp2.2\Razor\Views\LoadGame\SavedGames.g.cshtml.cs
-C:\Users\SRoy\Documents\git\TownAttackRPG\TownAttackRPG\obj\Debug\netcoreapp2.2\Razor\Views\Options\Index.g.cshtml.cs
 C:\Users\SRoy\Documents\git\TownAttackRPG\TownAttackRPG\obj\Debug\netcoreapp2.2\Razor\Views\Game\Index.g.cshtml.cs
 E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\TownAttackRPG\bin\Debug\netcoreapp2.2\appsettings.Development.json
 E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\TownAttackRPG\bin\Debug\netcoreapp2.2\appsettings.json
@@ -81,3 +75,16 @@ E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\TownAttackRPG\o
 E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\TownAttackRPG\obj\Debug\netcoreapp2.2\Razor\Views\NewGame\Profession.cshtml.g.cs
 E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\TownAttackRPG\obj\Debug\netcoreapp2.2\Razor\Views\NewGame\SelectSaveSlot.cshtml.g.cs
 E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\TownAttackRPG\obj\Debug\netcoreapp2.2\Razor\Views\LoadGame\SelectSaveSlot.cshtml.g.cs
+C:\Users\SRoy\Documents\git\TownAttackRPG\TownAttackRPG\bin\Debug\netcoreapp2.2\DAL\JsonData\Equipment.json
+C:\Users\SRoy\Documents\git\TownAttackRPG\TownAttackRPG\bin\Debug\netcoreapp2.2\DAL\JsonData\Item.json
+C:\Users\SRoy\Documents\git\TownAttackRPG\TownAttackRPG\bin\Debug\netcoreapp2.2\DAL\JsonData\SaveGame1.json
+C:\Users\SRoy\Documents\git\TownAttackRPG\TownAttackRPG\bin\Debug\netcoreapp2.2\DAL\JsonData\SaveGame2.json
+C:\Users\SRoy\Documents\git\TownAttackRPG\TownAttackRPG\bin\Debug\netcoreapp2.2\DAL\JsonData\SaveGame3.json
+C:\Users\SRoy\Documents\git\TownAttackRPG\TownAttackRPG\obj\Debug\netcoreapp2.2\Razor\Views\LoadGame\Index.g.cshtml.cs
+C:\Users\SRoy\Documents\git\TownAttackRPG\TownAttackRPG\obj\Debug\netcoreapp2.2\Razor\Views\LoadGame\SelectSaveSlot.g.cshtml.cs
+C:\Users\SRoy\Documents\git\TownAttackRPG\TownAttackRPG\obj\Debug\netcoreapp2.2\Razor\Views\Main\Index.g.cshtml.cs
+C:\Users\SRoy\Documents\git\TownAttackRPG\TownAttackRPG\obj\Debug\netcoreapp2.2\Razor\Views\Main\Options.g.cshtml.cs
+C:\Users\SRoy\Documents\git\TownAttackRPG\TownAttackRPG\obj\Debug\netcoreapp2.2\Razor\Views\NewGame\NameAndGender.g.cshtml.cs
+C:\Users\SRoy\Documents\git\TownAttackRPG\TownAttackRPG\obj\Debug\netcoreapp2.2\Razor\Views\NewGame\Profession.g.cshtml.cs
+C:\Users\SRoy\Documents\git\TownAttackRPG\TownAttackRPG\obj\Debug\netcoreapp2.2\Razor\Views\NewGame\SelectSaveSlot.g.cshtml.cs
+C:\Users\SRoy\Documents\git\TownAttackRPG\TownAttackRPG\obj\Debug\netcoreapp2.2\Razor\Views\NewGame\SelectScenario.g.cshtml.cs

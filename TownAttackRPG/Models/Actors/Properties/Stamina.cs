@@ -3,6 +3,7 @@ using TownAttackRPG.Models.Professions;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace TownAttackRPG.Models.Actors.Characters.Stats
 {
@@ -12,6 +13,7 @@ namespace TownAttackRPG.Models.Actors.Characters.Stats
          Stamina or SP (stamina points) measures how much energy your character has available to use skills.
          Stamina will regenerate on its own in combat, but can also be restored by certain skills or items.
         */
+        [JsonConstructor]
         public Stamina(Actor actor)
         {
             if (actor is Character)

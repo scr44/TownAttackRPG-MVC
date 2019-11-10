@@ -62,6 +62,10 @@ namespace TownAttackRPG.Models.Actors.Characters.Stats
         {
             get
             {
+                if (AttachedCharacter is null)
+                {
+                    return null;
+                }
                 return new Dictionary<string, int>()
                 {
                     { "STR", BaseValue["STR"] + (int)AttachedCharacter.EquipmentMod("STR", AttachedCharacter.Equipment) + (int)AttachedCharacter.EffectMod("STR") },

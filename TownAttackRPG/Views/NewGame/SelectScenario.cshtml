@@ -7,11 +7,13 @@
 <h1>SelectScenario</h1>
 
 <div class="game-window">
-    <form method="post">
-        <input type="hidden" asp-for="@Model.ScenarioChoice" value="tutorial" />
-        <button class="scenario-card" type="submit">
-            <h1>Tutorial</h1>
-            <p>Learn the basics of Town Attack RPG.</p>
-        </button>
-    </form>
+    <content class="card-deck">
+        <form method="post">
+            <input type="hidden" asp-for="@Model.ScenarioChoice" value="tutorial" />
+            <button class="scenario-card" type="submit">
+                <h1>Tutorial</h1>
+                <p>Learn the basics of Town Attack RPG.</p>
+            </button>
+        </form>
+    </content>
 </div>
