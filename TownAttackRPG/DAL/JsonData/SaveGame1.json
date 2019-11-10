@@ -4,17 +4,21 @@
   "SaveGameSlot": 1,
   "ActiveScenario": {
     "$id": "2",
+    "$type": "TownAttackRPG.Models.Scenarios.Campaign.Tutorial.Tutorial, TownAttackRPG",
     "Name": "Tutorial",
     "PlayerParty": [
       {
         "$id": "3",
+        "$type": "TownAttackRPG.Models.Actors.Characters.Character, TownAttackRPG",
         "ArmorPiercing": 0.0,
         "FirstName": "Guinevere",
         "LastName": "Guinevere",
         "Profession": {
+          "$type": "TownAttackRPG.Models.Professions.DefaultProfessions.Knight, TownAttackRPG",
           "StartingSkills": [
             {
               "$id": "4",
+              "$type": "TownAttackRPG.Models.Skills.Techniques.Swords.DoubleSlash, TownAttackRPG",
               "FullDescrip": "Two-handed Knightly Sword Technique: Attack twice, dealing 15.6 slashing damage each time.",
               "Self": {
                 "$ref": "3"
@@ -321,6 +325,7 @@
             },
             "Memento": {
               "$id": "11",
+              "$type": "TownAttackRPG.Models.Items.VendorTrash.Memento, TownAttackRPG",
               "ItemID": 0,
               "ItemName": "Memento",
               "ItemDescrip": "A trinket to commemorate a victorious battle long ago.",
@@ -497,6 +502,7 @@
             },
             {
               "$id": "12",
+              "$type": "TownAttackRPG.Models.Skills.EmptySkill, TownAttackRPG",
               "FullDescrip": "An empty skill slot",
               "Self": {
                 "$ref": "3"
@@ -517,6 +523,7 @@
             },
             {
               "$id": "13",
+              "$type": "TownAttackRPG.Models.Skills.EmptySkill, TownAttackRPG",
               "FullDescrip": "An empty skill slot",
               "Self": {
                 "$ref": "3"
@@ -537,6 +544,7 @@
             },
             {
               "$id": "14",
+              "$type": "TownAttackRPG.Models.Skills.EmptySkill, TownAttackRPG",
               "FullDescrip": "An empty skill slot",
               "Self": {
                 "$ref": "3"
@@ -557,6 +565,7 @@
             },
             {
               "$id": "15",
+              "$type": "TownAttackRPG.Models.Skills.EmptySkill, TownAttackRPG",
               "FullDescrip": "An empty skill slot",
               "Self": {
                 "$ref": "3"
@@ -577,6 +586,7 @@
             },
             {
               "$id": "16",
+              "$type": "TownAttackRPG.Models.Skills.EmptySkill, TownAttackRPG",
               "FullDescrip": "An empty skill slot",
               "Self": {
                 "$ref": "3"
@@ -615,6 +625,7 @@
     "StartingModuleIndex": 0,
     "ActiveModule": {
       "$id": "17",
+      "$type": "TownAttackRPG.Models.Scenarios.Tutorial.Dialogue.Tutorial_Dialogue_01_Welcome, TownAttackRPG",
       "Dialogue": [],
       "Responses": {
         "$id": "18"

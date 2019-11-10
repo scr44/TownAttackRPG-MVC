@@ -38,10 +38,10 @@ namespace TownAttackRPG.Models.Professions.DefaultProfessions
                 { "Engineering", 1 },
                 { "History", 2 }
             };
-            StartingInventoryDict = new Dictionary<Item, int>()
+            StartingInventoryList = new List<Item>()
             {
-                { ItemDAO.CreateNewItem("Coins"), 400 },
-                { new Diploma(), 1 }
+                ItemDAO.CreateNewItem("Coins",400),
+                // Diploma
             };
             StartingEquipmentDict = new Dictionary<string, Items.Equipment.EquipmentItem>()
             {

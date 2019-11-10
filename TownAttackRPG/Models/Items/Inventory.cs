@@ -4,32 +4,24 @@ using TownAttackRPG.Models.Items.Equipment;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
+using TownAttackRPG.DAL.Interfaces;
+using TownAttackRPG.DAL.DAOs.Json;
 
 namespace TownAttackRPG.Models.Actors.ActorProperties
 {
     public class Inventory
     {
+        IItemDAO ItemDAO { get; set; } = new ItemJsonDAO(@"./DAL/JsonData"); // TODO DAO: make this more elegant and robust
         public Inventory() { }
-        public Inventory(Dictionary<Item,int> initItems)
+        public Inventory(List<Item> initItems)
         {
-            foreach(var item in initItems)
-            {
-                for (int i = 1; i <= item.Value; i++)
-                {
-                    this.AddItem(item.Key);
-                }
-            }
+            this.Items = initItems;
         }
-        public Inventory(Character character, Dictionary<Item, int> initItems)
+        public Inventory(Character character, List<Item> initItems)
         {
             AttachedCharacter = character;
-            foreach (var item in initItems)
-            {
-                for (int i = 1; i <= item.Value; i++)
-                {
-                    this.AddItem(item.Key);
-                }
-            }
+            this.Items = initItems;
         }
 
         public Character AttachedCharacter { get; }
@@ -43,7 +35,7 @@ namespace TownAttackRPG.Models.Actors.ActorProperties
                 }
 
                 double moddedSTR = AttachedCharacter.Attributes.BaseValue["STR"]
-                    + AttachedCharacter.EquipmentMod("STR", AttachedCharacter.Equipment) 
+                    + AttachedCharacter.EquipmentMod("STR", AttachedCharacter.Equipment)
                     + AttachedCharacter.EffectMod("STR");
                 if (moddedSTR <= 10)
                 {
@@ -68,11 +60,10 @@ namespace TownAttackRPG.Models.Actors.ActorProperties
                 }
 
                 double weight = 0;
-                foreach (KeyValuePair<string, Item> item in this.InventoryContents)
+                foreach (Item item in Items)
                 {
                     // weight of all items in inventory
-                    weight += this.InventoryContents[item.Key].Weight
-                        * this.InventoryCounts[item.Key];
+                    weight += item.Weight * item.StackSize;
                 }
                 foreach (var item in AttachedCharacter.Equipment.Slot)
                 {
@@ -89,66 +80,138 @@ namespace TownAttackRPG.Models.Actors.ActorProperties
             {
                 return WeightLoad > WeightCapacity;
             }
-        } 
+        }
 
-        /// <summary>
-        /// The contents of a character's inventory.
-        /// </summary>
-        public Dictionary<string, Item> InventoryContents { get; private set; } =
-            new Dictionary<string, Item>();
-        /// <summary>
-        /// The counts of a character's inventory.
-        /// </summary>
-        public Dictionary<string, int> InventoryCounts { get; private set; } =
-            new Dictionary<string, int>();
-
-        /// <summary>
-        /// Adds the given item to the inventory.
-        /// </summary>
-        /// <param name="item"></param>
-        public void AddItem(Item item)
+        public List<Item> Items { get; protected set; } = new List<Item>();
+        public Dictionary<string,int> ItemCounts
         {
-            if (InventoryContents.TryAdd(item.ItemName, item))
+            get
             {
-                InventoryCounts.Add(item.ItemName, 1);
-            }
-            else
-            {
-                InventoryCounts[item.ItemName]++;
+                Dictionary<string, int> result = new Dictionary<string, int>();
+                foreach(Item item in Items)
+                {
+                    if (!result.TryAdd(item.ItemName, item.StackSize))
+                    {
+                        result[item.ItemName] += item.StackSize;
+                    }
+                }
+                return result;
             }
         }
-        public void AddItem(Item item, int count)
+        private List<Item> NonMaxedStacks
         {
-            for (int i = 0; i < count; i++)
+            get
             {
-                this.AddItem(item);
+                List<Item> nonMaxStacks = (List<Item>)(
+                                              from i in Items
+                                              where i.StackSize < i.MaxStackSize
+                                              select i);
+                return nonMaxStacks;
+            }
+        }
+
+        public bool Contains(string itemName)
+        {
+            foreach (Item item in Items)
+            {
+                if (item.ItemName == itemName)
+                {
+                    return true;
+                }
+            };
+            return false;
+        }
+        public Item GetFirstItemInstance(string itemName)
+        {
+            Item item = ItemDAO.CreateNewItem(itemName);
+            int index = Items.FindIndex(i => (i.ItemID == item.ItemID)
+                                          && (i.ItemName == item.ItemName));
+            return Items[index];
+        }
+        /// <summary>
+        /// Adds the given item(s) to the inventory.
+        /// </summary>
+        /// <param name="item">The item object to add.</param>
+        /// <param name="count">The number of items to add.</param>
+        public void AddItem(Item item, int count=1)
+        {
+            while (count > 0)
+            {
+                if (count >= item.MaxStackSize)
+                {
+                    // First, create as many full stacks as we can
+                    item.StackSize = item.MaxStackSize;
+                    Items.Add(item);
+                    count -= item.MaxStackSize;
+                }
+                else
+                {
+                    // Now check whether any partial stacks exist
+                    if (NonMaxedStacks.Contains(item))
+                    {
+                        // If partial stacks exist, find the first one's index in the main list
+                        int index = Items.FindIndex(i => (i.ItemID == item.ItemID) 
+                            && (i.ItemName == item.ItemName)
+                            && (i.StackSize < i.MaxStackSize));
+                        
+                        // Calculate how much room it has left in the stack
+                        int remainingSpace = Items[index].MaxStackSize - Items[index].StackSize;
+
+                        // If the remaining count won't completely fit, fill the stack and run the loop again
+                        if (count > remainingSpace)
+                        {
+                            count -= remainingSpace;
+                            Items[index].StackSize += remainingSpace;
+                        }
+                        else
+                        {
+                            // If it does fit, add the rest of the count to the stack and end
+                            Items[index].StackSize += count;
+                            count = 0;
+                        }
+
+                    }
+                    else
+                    {
+                        // If no partial stack exists, create a new one and end
+                        item.StackSize = count;
+                        Items.Add(item);
+                        count = 0;
+                    }
+                }
             }
         }
         /// <summary>
-        /// Removes an item from the inventory and returns it to the caller.
+        /// Removes item(s) from the inventory.
         /// </summary>
         /// <param name="item">Item to remove</param>
-        public void RemoveItem(string itemName)
+        public void RemoveItem(Item item, int count=1)
         {
-            if (InventoryCounts[itemName] > 1)
+            while (count > 0)
             {
-                InventoryCounts[itemName]--;
-            }
-            else if (InventoryCounts[itemName] == 1)
-            {
-                InventoryContents.Remove(itemName);
-                InventoryCounts.Remove(itemName);
-            }
-            else
-            {
-                throw new ArgumentOutOfRangeException("An inventory cannot have a negative number of items.");
-            }
-        }
-        public void RemoveItem(string itemName, int count)
-        {
-            for(int i = 0; i < count; i++)
-            {
-                this.RemoveItem(itemName);
+                // Make sure there are enough items to fill the remove request
+                if (ItemCounts[item.ItemName] < count)
+                {
+                    throw new NotEnoughItemsException($"Not enough {item.ItemName} items in {AttachedCharacter.Name}'s inventory to meet remove request.");
+                }
+
+                // Find the first instance of the item in the main list
+                int index = Items.FindIndex(i => (i.ItemID == item.ItemID)
+                            && (i.ItemName == item.ItemName));
+
+                if (count > Items[index].StackSize)
+                {
+                    // If the remove count exceeds the stack size, deplete stack and remove
+                    count -= Items[index].StackSize;
+                    Items.RemoveAt(index);
+                    // Then repeat loop to look for another stack
+                }
+                else
+                {
+                    // Otherwise, remove the appropriate number of items from the stack and end
+                    Items[index].StackSize -= count;
+                    count = 0;
+                }
             }
         }
         /// <summary>
@@ -156,20 +219,27 @@ namespace TownAttackRPG.Models.Actors.ActorProperties
         /// </summary>
         /// <param name="item"></param>
         /// <param name="target"></param>
-        public void GiveItem(Item item, Inventory target)
+        public void GiveItem(Item item, Inventory target, int count=1)
         {
-            target.AddItem(item);
-            this.RemoveItem(item.ItemName);
+            target.AddItem(item, count);
+            this.RemoveItem(item, count);
         }
         /// <summary>
         /// Transfers an item from the target inventory to this one.
         /// </summary>
         /// <param name="item"></param>
         /// <param name="target"></param>
-        public void TakeItem(Item item, Inventory target)
+        public void TakeItem(Item item, Inventory target, int count=1)
         {
-            this.AddItem(item);
-            target.RemoveItem(item.ItemName);
+            this.AddItem(item, count);
+            target.RemoveItem(item, count);
+        }
+    }
+    public class NotEnoughItemsException : Exception
+    {
+        public NotEnoughItemsException(string message) : base(message)
+        {
+
         }
     }
 }

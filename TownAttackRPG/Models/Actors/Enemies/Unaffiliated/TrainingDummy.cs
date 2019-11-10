@@ -12,7 +12,7 @@ namespace TownAttackRPG.Models.Actors.Enemies.Unaffiliated
     public class TrainingDummy : Enemy
     {
         public TrainingDummy(int baseHP, int baseSP, int SPRegen, 
-            string name="Training Dummy", Dictionary<Item, int> rewards = null) : 
+            string name="Training Dummy", List<Item> rewards = null) : 
             base(baseHP, baseSP, SPRegen, name, rewards)
         {
             // base.Skillbar fills here

@@ -42,9 +42,12 @@ namespace TownAttackRPG.Models.Professions.DefaultProfessions
                 { "Engineering", 0 },
                 { "History", 0 }
             };
-            StartingInventoryDict = new Dictionary<Item, int>()
+            StartingInventoryList = new List<Item>()
             {
-
+                // Mushroom Brew
+                // Herbal Poultice
+                // Witch's Ointment
+                // Pungent Nuts
             };
             StartingEquipmentDict = new Dictionary<string, Items.Equipment.EquipmentItem>()
             {

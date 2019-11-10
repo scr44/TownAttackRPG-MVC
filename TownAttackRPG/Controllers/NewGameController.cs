@@ -17,7 +17,7 @@ namespace TownAttackRPG.Controllers
 {
     public class NewGameController : Controller
     {
-        private ISaveGameDAO SaveGameDAO;
+        private readonly ISaveGameDAO SaveGameDAO;
         public NewGameController(ISaveGameDAO saveGameDAO)
         {
             this.SaveGameDAO = saveGameDAO;

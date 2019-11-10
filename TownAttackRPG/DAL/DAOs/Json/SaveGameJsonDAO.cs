@@ -24,6 +24,7 @@ namespace TownAttackRPG.DAL.DAOs.Json
             string path = JsonFolderPath + $"/SaveGame{slot}.json";
             string jsonData = JsonConvert.SerializeObject(gameData, new JsonSerializerSettings()
             { 
+                TypeNameHandling = TypeNameHandling.Auto,
                 PreserveReferencesHandling = PreserveReferencesHandling.Objects,
                 Formatting = Formatting.Indented
             });
@@ -38,7 +39,7 @@ namespace TownAttackRPG.DAL.DAOs.Json
                 string jsonData = sr.ReadToEnd();
                 GameData gameData = JsonConvert.DeserializeObject<GameData>(jsonData,new JsonSerializerSettings()
                 {
-                    TypeNameHandling = TypeNameHandling.All
+                    TypeNameHandling = TypeNameHandling.Auto
                 });
                 gameData.SaveGameSlot = slot;
                 return gameData;

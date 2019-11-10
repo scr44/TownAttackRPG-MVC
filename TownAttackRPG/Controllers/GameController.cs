@@ -8,7 +8,7 @@ namespace TownAttackRPG.Controllers
 {
     public class GameController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index(int slot)
         {
             return View();
         }

@@ -80,3 +80,4 @@ E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\TownAttackRPG\o
 E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\TownAttackRPG\obj\Debug\netcoreapp2.2\Razor\Views\NewGame\NameAndGender.cshtml.g.cs
 E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\TownAttackRPG\obj\Debug\netcoreapp2.2\Razor\Views\NewGame\Profession.cshtml.g.cs
 E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\TownAttackRPG\obj\Debug\netcoreapp2.2\Razor\Views\NewGame\SelectSaveSlot.cshtml.g.cs
+E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\TownAttackRPG\obj\Debug\netcoreapp2.2\Razor\Views\LoadGame\SelectSaveSlot.cshtml.g.cs

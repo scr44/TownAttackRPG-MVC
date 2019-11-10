@@ -62,17 +62,17 @@ namespace Characters
         [TestMethod]
         public void HasStartingInventory()
         {
-            Dictionary<string, Item> characterContents = Guinevere.Inventory.InventoryContents;
-            Dictionary<string, int> characterCounts = Guinevere.Inventory.InventoryCounts;
+            List<Item> characterContents = Guinevere.Inventory.Items;
+            Dictionary<string, int> characterCounts = Guinevere.Inventory.ItemCounts;
 
-            Dictionary<Item, int> synthesizedInventory = new Dictionary<Item, int>();
+            List<Item> synthesizedInventory = new List<Item>();
 
-            foreach(KeyValuePair<string, Item> item in characterContents)
+            foreach(Item item in characterContents)
             {
-                synthesizedInventory.Add(item.Value, characterCounts[item.Key]);
+                synthesizedInventory.Add(item);
             }
 
-            Dictionary<Item, int> defaultInventory = new Knight().StartingInventoryDict;
+            List<Item> defaultInventory = new Knight().StartingInventoryList;
 
             Assert.AreEqual(synthesizedInventory.ToString(), defaultInventory.ToString(),
                 "The two Character inventory types should contain the data from the profession's default inventory.");
@@ -103,38 +103,34 @@ namespace Characters
             // generate new empty inventory
             Inventory inventory = new Inventory();
 
-            Assert.IsTrue(inventory.InventoryCounts.Values.Count == 0, "Brand-new inventory should have 0 items.");
+            Assert.IsTrue(inventory.ItemCounts.Values.Count == 0, "Brand-new inventory should have 0 items.");
 
             for (int i = 0; i < 5; i++)
             {
                 inventory.AddItem(ItemDAO.CreateNewEquipmentItem("Longsword"));
             }
 
-            Assert.IsTrue(inventory.InventoryContents.Count == 1, "Inventory should only have one actual Longsword object stored.");
-            Assert.IsTrue(inventory.InventoryCounts["Longsword"] == 5, "Inventory should know it has 5 longswords available to dispense.");
+            Assert.IsTrue(inventory.Contains("Longsword"), "Inventory should have Longsword(s) in it.");
+            Assert.IsTrue(inventory.ItemCounts["Longsword"] == 5, "Inventory should know it has 5 longswords available to dispense.");
 
         }
         [TestMethod]
         public void RemovingItems()
         {
             // generate new inventory with 5000 coins in it.
-            Dictionary<Item, int> init = new Dictionary<Item, int>()
+            List<Item> init = new List<Item>()
             {
-                { ItemDAO.CreateNewItem("Coins"), 5000 }
+                ItemDAO.CreateNewItem("Coins", 5000)
             };
             Inventory inventory = new Inventory(init);
 
-            Assert.IsTrue(inventory.InventoryContents.Count == 1,
-                "Inventory should only contain one actual Coins object");
-            Assert.IsTrue(inventory.InventoryCounts["Coins"] == 5000,
+            Assert.IsTrue(inventory.ItemCounts["Coins"] == 5000,
                 "Inventory should have 5000 coins available");
 
             // spend 2500 coins
-            inventory.RemoveItem("Coins", 2500);
+            inventory.RemoveItem(ItemDAO.CreateNewItem("Coins"), 2500);
 
-            Assert.IsTrue(inventory.InventoryContents.Count == 1,
-                "Inventory should only contain one actual Coins object");
-            Assert.IsTrue(inventory.InventoryCounts["Coins"] == 2500,
+            Assert.IsTrue(inventory.ItemCounts["Coins"] == 2500,
                 "Inventory should have 2500 coins available");
         }
 
@@ -143,17 +139,17 @@ namespace Characters
         [TestMethod]
         public void CharacterRemovesItem()
         {
-            Assert.IsTrue(Guinevere.Inventory.InventoryContents.ContainsKey("Memento"),
+            Assert.IsTrue(Guinevere.Inventory.Contains("Memento"),
                 "Knights should start with a Memento in their inventories.");
-            Guinevere.Inventory.RemoveItem("Memento");
-            Assert.IsFalse(Guinevere.Inventory.InventoryContents.ContainsKey("Memento"),
+            Guinevere.Inventory.RemoveItem(ItemDAO.CreateNewItem("Memento"));
+            Assert.IsFalse(Guinevere.Inventory.Items.Contains(ItemDAO.CreateNewItem("Memento")),
                 "The Memento should be removed.");
         }
         [TestMethod]
         public void CharacterAddsItem()
         {
             Guinevere.Inventory.AddItem(new Memento());
-            Assert.IsTrue(Guinevere.Inventory.InventoryContents.ContainsKey("Memento"),
+            Assert.IsTrue(Guinevere.Inventory.Items.Contains(ItemDAO.CreateNewItem("Memento")),
                 "A new Memento should be added to the character's inventory.");
         }
         [TestMethod]
@@ -220,14 +216,14 @@ namespace Characters
             Guinevere.Inventory.AddItem(ItemDAO.CreateNewEquipmentItem("Longsword"));
 
             // Equip the Longsword in the OffHand slot, have to cast it back out of Item
-            Guinevere.Equipment.Equip("OffHand", (EquipmentItem)Guinevere.Inventory.InventoryContents["Longsword"]);
+            Guinevere.Equipment.Equip("OffHand", "Longsword");
             Assert.IsTrue(Guinevere.Equipment.Slot["OffHand"].ItemName == "Longsword",
                 "Character should have the longsword from their inventory equipped.");
 
             // Make sure the Longsword was taken from the inventory
-            Assert.IsFalse(Guinevere.Inventory.InventoryContents.ContainsKey("Longsword"),
+            Assert.IsFalse(Guinevere.Inventory.Contains("Longsword"),
                 "Longsword should be gone from character's inventory.");
-            Assert.IsFalse(Guinevere.Inventory.InventoryCounts.ContainsKey("Longsword"),
+            Assert.IsFalse(Guinevere.Inventory.ItemCounts.ContainsKey("Longsword"),
                 "Character's inventory should have no more Longswords.");
         }
         [TestMethod]
@@ -246,10 +242,10 @@ namespace Characters
                 "When 2H weapon is unequipped, both hands should be bare handed.");
 
             // Confirm that a single longsword was deposited in the character's inventory
-            Assert.IsTrue(Guinevere.Inventory.InventoryContents.ContainsKey("Longsword"),
+            Assert.IsTrue(Guinevere.Inventory.Contains("Longsword"),
                 "Character should have a longsword in their inventory.");
 
-            Assert.IsTrue(Guinevere.Inventory.InventoryCounts["Longsword"] == 1,
+            Assert.IsTrue(Guinevere.Inventory.ItemCounts["Longsword"] == 1,
                 "Charater should have exactly 1 Longsword in their inventory.");
 
             
@@ -263,6 +259,7 @@ namespace Characters
 
             Guinevere.Inventory.AddItem(brokenSword);
 
+            brokenSword.ItemName = "Broken Sword";
             brokenSword.DamageEquipment(100);
 
             Assert.IsTrue(brokenSword.Condition == 0, 
@@ -271,7 +268,7 @@ namespace Characters
             Assert.IsTrue(brokenSword.EquipmentTags.Contains("Broken"),
                 "Equipment item should have the broken keyword.");
 
-            Assert.IsFalse(Guinevere.Equipment.Equip("OffHand", brokenSword),
+            Assert.IsFalse(Guinevere.Equipment.Equip("OffHand", "Broken Sword"),
                 "Broken gear should not be equippable.");
 
             brokenSword.RepairEquipment(5);
@@ -279,7 +276,7 @@ namespace Characters
             Assert.IsFalse(brokenSword.EquipmentTags.Contains("Broken"),
                 "Equipment item should no longer be broken.");
 
-            Assert.IsTrue(Guinevere.Equipment.Equip("OffHand", brokenSword),
+            Assert.IsTrue(Guinevere.Equipment.Equip("OffHand", "Broken Sword"),
                 "Sword should no longer be broken.");
         }
         [TestMethod]

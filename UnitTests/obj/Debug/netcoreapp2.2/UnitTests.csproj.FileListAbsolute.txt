@@ -42,3 +42,6 @@ E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\UnitTests\obj\D
 E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\UnitTests\obj\Debug\netcoreapp2.2\UnitTests.pdb
 E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\UnitTests\bin\Debug\netcoreapp2.2\DAL\JsonData\Equipment.json
 E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\UnitTests\bin\Debug\netcoreapp2.2\DAL\JsonData\Item.json
+E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\UnitTests\bin\Debug\netcoreapp2.2\DAL\JsonData\SaveGame1.json
+E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\UnitTests\bin\Debug\netcoreapp2.2\DAL\JsonData\SaveGame2.json
+E:\Program Files (x86)\Microsoft Visual Studio\git\TownAttackRPG\UnitTests\bin\Debug\netcoreapp2.2\DAL\JsonData\SaveGame3.json

@@ -11,7 +11,7 @@ namespace TownAttackRPG.Models.Actors.Enemies
 {
     abstract public class Enemy : Actor
     {
-        public Enemy(int baseHP, int baseSP, int SPRegen, string name, Dictionary<Item,int> rewards=null) : base(name)
+        public Enemy(int baseHP, int baseSP, int SPRegen, string name, List<Item> rewards=null) : base(name)
         {
             HP = new Health(this, baseHP);
             SP = new Stamina(this, baseSP, SPRegen);

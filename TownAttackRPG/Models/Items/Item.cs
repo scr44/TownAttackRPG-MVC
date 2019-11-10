@@ -16,5 +16,6 @@ namespace TownAttackRPG.Models.Items
         public int Value { get; set; }
         public double Weight { get; set; }
         public int MaxStackSize { get; set; } = 250;
+        public int StackSize { get; set; }
     }
 }

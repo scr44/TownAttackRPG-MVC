@@ -40,9 +40,9 @@
                     </section>
                     <section class="starting-items">
                         <header>Starting Items</header>
-                        @foreach (var item in prof.StartingInventoryDict)
+                        @foreach (var item in prof.StartingInventoryList)
                         {
-                            <p>@(item.Key.ItemName): @("x"+item.Value)</p>
+                            <p>@(item.ItemName): @("x"+item.StackSize)</p>
                         }
                     </section>
                 </div>

@@ -74,7 +74,7 @@ namespace TownAttackRPG.Models.Professions
             { "Engineering", 0 },
             { "History", 0 }
         };
-        public Dictionary<Item, int> StartingInventoryDict { get; protected set; }
+        public List<Item> StartingInventoryList { get; protected set; }
         public Dictionary<string, EquipmentItem> StartingEquipmentDict { get; protected set; }
         public List<Skill> StartingSkills = new List<Skill>(6) { null, null, null, null, null, null };
         #endregion

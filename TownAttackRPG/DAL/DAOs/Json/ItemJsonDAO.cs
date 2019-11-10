@@ -18,7 +18,7 @@ namespace TownAttackRPG.DAL.DAOs.Json
             this.JsonFolderPath = jsonFolderPath;
         }
 
-        public Item CreateNewItem(int id)
+        public Item CreateNewItem(int id, int count=1)
         {
             string path = JsonFolderPath + "/Item.json";
             using (StreamReader sr = new StreamReader(path))
@@ -32,10 +32,13 @@ namespace TownAttackRPG.DAL.DAOs.Json
                 {
                     throw new ArgumentException($"Argument Exception: ItemID {id} not found in item database.");
                 }
-                return itemResult.ToList<Item>()[0];
+
+                Item item = itemResult.ToList<Item>()[0];
+                item.StackSize = count;
+                return item;
             }
         }
-        public Item CreateNewItem(string itemName)
+        public Item CreateNewItem(string itemName, int count = 1)
         {
             string path = JsonFolderPath + "/Item.json";
             using (StreamReader sr = new StreamReader(path))
@@ -49,11 +52,13 @@ namespace TownAttackRPG.DAL.DAOs.Json
                 {
                     throw new ArgumentException($"Argument Exception: {itemName} not found in item database.");
                 }
-                return itemResult.ToList<Item>()[0];
+                Item item = itemResult.ToList<Item>()[0];
+                item.StackSize = count;
+                return item;
             }
         }
 
-        public EquipmentItem CreateNewEquipmentItem(int id)
+        public EquipmentItem CreateNewEquipmentItem(int id, int count = 1)
         {
             string path = JsonFolderPath + "/Equipment.json";
             using (StreamReader sr = new StreamReader(path))
@@ -68,10 +73,12 @@ namespace TownAttackRPG.DAL.DAOs.Json
                     throw new ArgumentException($"Argument Exception: ItemID {id} not found in equipment database.");
                 }
 
-                return itemResult.ToList<EquipmentItem>()[0];
+                EquipmentItem item = itemResult.ToList<EquipmentItem>()[0];
+                item.StackSize = count;
+                return item;
             }
         }
-        public EquipmentItem CreateNewEquipmentItem(string itemName)
+        public EquipmentItem CreateNewEquipmentItem(string itemName, int count = 1)
         {
             string path = JsonFolderPath + "/Equipment.json";
             using (StreamReader sr = new StreamReader(path))
@@ -85,7 +92,10 @@ namespace TownAttackRPG.DAL.DAOs.Json
                 {
                     throw new ArgumentException($"Argument Exception: {itemName} not found in equipment database.");
                 }
-                return itemResult.ToList<EquipmentItem>()[0];
+
+                EquipmentItem item = itemResult.ToList<EquipmentItem>()[0];
+                item.StackSize = count;
+                return item;
             }
         }
     }

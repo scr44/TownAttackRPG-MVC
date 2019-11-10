@@ -200,7 +200,7 @@ namespace Skills
 
             // replace the knight's sword with a book and 2H it (lol)
             Guinevere.Inventory.AddItem(ItemDAO.CreateNewEquipmentItem( "History Tome"));
-            Guinevere.Equipment.Equip("MainHand",Guinevere.Inventory.InventoryContents["History Tome"]);
+            Guinevere.Equipment.Equip("MainHand","History Tome");
             Guinevere.Equipment.Toggle2H();
 
             // try to use double slash, should fail because the book doesn't have a "sword" tag

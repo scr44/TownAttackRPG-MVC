@@ -20,7 +20,7 @@ namespace TownAttackRPG.Models.Actors.Characters
             Profession = prof;
             Attributes = new Attributes(this, prof.StartingAttributesDict);
             Talents = new Talents(this, prof.StartingTalentsDict);
-            Inventory = new Inventory(this, prof.StartingInventoryDict);
+            Inventory = new Inventory(this, prof.StartingInventoryList);
             Equipment = new Equipment(this, prof.StartingEquipmentDict);
             Skillbar = new Skillbar(this, prof.StartingSkills);
 

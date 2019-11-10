@@ -1,8 +1,9 @@
-﻿
+﻿@model int
 @{
     ViewData["Title"] = "Index";
+    int slot = (int)TempData["slot"];
 }
 
 <h1>Index</h1>
-
+<h2>You loaded Game Save @slot</h2>
 <p>eventually, the game goes here</p>

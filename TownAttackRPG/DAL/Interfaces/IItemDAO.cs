@@ -9,10 +9,10 @@ namespace TownAttackRPG.DAL.Interfaces
 {
     public interface IItemDAO
     {
-        Item CreateNewItem(int id);
-        Item CreateNewItem(string itemName);
+        Item CreateNewItem(int id, int count=1);
+        Item CreateNewItem(string itemName, int count=1);
 
-        EquipmentItem CreateNewEquipmentItem(int id);
-        EquipmentItem CreateNewEquipmentItem(string itemName);
+        EquipmentItem CreateNewEquipmentItem(int id, int count=1);
+        EquipmentItem CreateNewEquipmentItem(string itemName, int count=1);
     }
 }

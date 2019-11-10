@@ -152,8 +152,18 @@ namespace TownAttackRPG.Models.Actors.Characters
         /// </summary>
         /// <param name="slot"></param>
         /// <param name="item"></param>
-        public bool Equip(string slot, Item item)
+        public bool Equip(string slot, string itemName)
         {
+            Item item;
+            if (AttachedInventory.Contains(itemName))
+            {
+                item = AttachedInventory.GetFirstItemInstance(itemName);
+            }
+            else
+            {
+                return false;  // can't equip an item that's not in the inventory
+            }
+
             if ( !(item is EquipmentItem) )
             {
                 return false; // if the item isn't equipment, return false.
@@ -167,13 +177,10 @@ namespace TownAttackRPG.Models.Actors.Characters
              && !(equipment.EquipmentTags.Contains("Broken")))
             {
                 EquipmentItem priorEquipment = Slot[slot]; // Hold the prior equipped item,
-                AttachedInventory.RemoveItem(item.ItemName);
+                AttachedInventory.RemoveItem(item);
                 Slot[slot] = equipment;                    // and equip the new item.
-                if (                                       // If the slot was empty,
-                       priorEquipment.ItemName == "Bare Hand"
-                    || priorEquipment.ItemName == "Naked"  
-                    || priorEquipment.ItemName == "Unadorned"
-                    || priorEquipment.ItemName == "Two-handing")
+                                                           // If the slot was empty,
+                if (priorEquipment.EquipmentTags.Contains("None"))    
                 {
                     RefreshHpSpOnEquip(priorEquipment, equipment);
                     return true;                           // return true because the equip succeeded.
@@ -286,14 +293,6 @@ namespace TownAttackRPG.Models.Actors.Characters
             }
         }
         #endregion
-
-        public void DisplayEquipment()
-        {
-            foreach (KeyValuePair<string, EquipmentItem> equipment in Slot)
-            {
-                Console.WriteLine($"{equipment.Key} - {equipment.Value.ItemName}: {equipment.Value.ItemDescrip}\n");
-            }
-        }
 
         public double EquipmentMod(string stat, EquipmentItem equipment)
         {
