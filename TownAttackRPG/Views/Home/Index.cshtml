@@ -1,8 +1,11 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
-<div class="splash-screen-box">
-    <h1>TOWN ATTACK</h1>
-    <h3><a asp-controller="Main" asp-action="Index">Start Game</a></h3>
+<div class="splash-screen-grid">
+    <header class="menu-title">TOWN ATTACK RPG</header>
+    <form method="get" asp-controller="Main" asp-action="Index" class="splash-screen-start">
+        <button>
+            <content>START</content>
+        </button>
+    </form>
 </div>

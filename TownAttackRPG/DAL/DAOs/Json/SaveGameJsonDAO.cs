@@ -39,7 +39,8 @@ namespace TownAttackRPG.DAL.DAOs.Json
                 string jsonData = sr.ReadToEnd();
                 GameData gameData = JsonConvert.DeserializeObject<GameData>(jsonData,new JsonSerializerSettings()
                 {
-                    TypeNameHandling = TypeNameHandling.Auto
+                    TypeNameHandling = TypeNameHandling.Auto,
+                    PreserveReferencesHandling = PreserveReferencesHandling.Objects
                 });
                 gameData.SaveGameSlot = slot;
                 return gameData;

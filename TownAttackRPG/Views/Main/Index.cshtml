@@ -3,10 +3,25 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Town Attack RPG</h1>
-
-<ul class="centered-menu-list">
-    <li><a asp-controller="NewGame">New Game</a></li>
-    <li><a asp-controller="LoadGame" asp-action="SelectSaveSlot">Load Game</a></li>
-    <li><a asp-action="Options">Options</a></li>
-</ul>
+<div class="main-menu-grid">
+    <header class="menu-title">
+        TOWN ATTACK RPG
+    </header>
+    <div class="main-menu-flexbox">
+        <form asp-controller="NewGame">
+            <button>
+                <content>NEW GAME</content>
+            </button>
+        </form>
+        <form asp-controller="LoadGame">
+            <button>
+                <content>LOAD GAME</content>
+            </button>
+        </form>
+        <form asp-controller="Options">
+            <button>
+                <content>OPTIONS</content>
+            </button>
+        </form>
+    </div>
+</div>

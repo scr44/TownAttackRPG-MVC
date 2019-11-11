@@ -2,7 +2,6 @@
 
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
-
 a.navbar-brand {
   white-space: normal;
   text-align: center;
@@ -44,8 +43,9 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-color: #090000;
 }
 .footer {
   position: absolute;
@@ -58,18 +58,224 @@ body {
 }
 /* #endregion */
 
-/* #region Game Window CSS*/
-.game-window {
-    align-items: center;
-    width: 80vw;
-    height: 80vh;
+/*#region aspect ratio code I totally stole off the internet*/
+[style*="--aspect-ratio"] > :first-child {
+    width: 100%;
 }
-.card-deck {
-    display: flex;
+
+[style*="--aspect-ratio"] > img {
+    height: auto;
+}
+
+@supports (--custom:property) {
+    [style*="--aspect-ratio"] {
+        position: relative;
+    }
+
+        [style*="--aspect-ratio"]::before {
+            content: "";
+            display: block;
+            padding-bottom: calc(100% / (var(--aspect-ratio)));
+        }
+
+        [style*="--aspect-ratio"] > :first-child {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+        }
+}
+/*#endregion*/
+
+/* #region Game Layout CSS*/
+.game-window {
+    height: 80vh;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 15px;
+    background-color: saddlebrown;
+}
+.game-window-padding {
+    padding: 10px;
+    height: 100%;
+    width: 100%;
+}
+.game-content {
+    border-radius: 10px;
     justify-content: center;
-    padding: 20px;
-    padding-top: 10%;
-    padding-bottom: 10%;
-    height: 80%;
+    background-color: antiquewhite;
+    height: 100%;
+}
+.menu-title {
+    grid-area: title;
+    font-size: 70pt;
+    text-align: center;
+    padding-top: 5%;
+    font-family: 'Press Start 2P', cursive;
 }
 /* #endregion */
+
+/*#region Splash Screen*/
+.splash-screen-grid {
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr;
+    grid-template-rows: 1fr 5fr 2fr 1fr;
+    grid-template-areas:
+        ". . ."
+        ". title ."
+        ". start ."
+        ". . .";
+    height: 100%;
+}
+.splash-screen-title {
+    grid-area: title;
+    justify-self: center;
+    align-self: center;
+    background: -webkit-linear-gradient(#0044ff, #ff8e04);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+.splash-screen-start {
+    grid-area: start;
+    justify-self: center;
+    align-self: flex-start;
+}
+.splash-screen-start > button {
+    font-size: 30pt;
+    padding: 0.2em .5em;
+    margin: 0 0.3em 0.3em 0;
+    border: 0;
+    border-radius: 0.12em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Press Start 2P', cursive;
+    font-weight: 300;
+    text-align: center;
+    transition: all 0.2s;
+    background-color: antiquewhite;
+    color: black;
+}
+.splash-screen-start > button:hover {
+    background-color: black;
+    color: antiquewhite;
+}
+/*#endregion*/
+
+/*#region Main Menu*/
+.main-menu-grid {
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr;
+    grid-template-rows: 1fr 5fr 2fr 1fr;
+    grid-template-areas: 
+        ".   .   ." 
+        ". title ." 
+        ". menu  ." 
+        ". menu  .";
+    height: 100%;
+}
+.main-menu-flexbox {
+    grid-area: menu;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: stretch;
+    text-align: center;
+    height: 100%;
+}
+.main-menu-flexbox > form > button {
+    font-size: 30pt;
+    padding: 0.2em .5em;
+    margin: 0 0.3em 0.3em 0;
+    border: 0;
+    border-radius: 0.12em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Press Start 2P', cursive;
+    font-weight: 300;
+    text-align: center;
+    transition: all 0.2s;
+    background-color: antiquewhite;
+    color: black;
+}
+.main-menu-flexbox > form > button:hover {
+    background-color: black;
+    color: antiquewhite;
+}
+    /*#endregion*/
+
+/*#region Card Deck Menus*/
+.card-deck-menu-grid {
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr;
+    grid-template-rows: 1fr 3fr 1fr 7fr 1fr;
+    grid-template-areas: 
+        ".   .   ." 
+        ". title ." 
+        ".   .   ."
+        ". cards ." 
+        ".   .   .";
+    height: 100%;
+}
+.card-deck-menu-title {
+    font-size: 30pt;
+}
+.card-deck {
+    grid-area: cards;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: stretch;
+    /*align-items: flex-start;*/
+}
+.card-backing {
+    background-color: saddlebrown;
+    height: 100%;
+    border-radius: 10px;
+}
+.card-padding {
+    padding: 8px;
+    height: 100%;
+    width: 100%;
+}
+/*#endregion*/
+
+/*#region Scenario Card*/
+.scenario-card {
+    height: 100%;
+    border: 0px;
+    border-radius: 5px;
+    background-color: antiquewhite;
+    display: grid;
+    grid-template-columns: 1fr 18fr 1fr;
+    grid-template-rows: 1fr 5fr 2fr 1fr 3fr 1fr;
+    grid-template-areas: 
+        ".     .    ." 
+        ". cardpic  ."
+        ". cardname ." 
+        ".     .    ." 
+        ". cardtext ."
+        ".     .    ."
+}
+.scenario-card > img {
+    grid-area: cardpic;
+    max-width: 270px;
+    justify-self: center;
+}
+.scenario-card > header {
+    grid-area: cardname;
+    font-family: 'McLaren', cursive;
+    max-width: 277px;
+    font-size: 30pt;
+}
+.scenario-card > content {
+    grid-area: cardtext;
+    font-family: 'McLaren', cursive;
+    font-size: 20pt;
+    width: 100%;
+    max-width: 277px;
+}
+
+/*#endregion*/
+

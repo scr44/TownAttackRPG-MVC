@@ -21,6 +21,11 @@ namespace TownAttackRPG.Controllers
             this.SaveGameDAO = saveGameDAO;
         }
 
+        public IActionResult Index()
+        {
+            return RedirectToAction("SelectSaveSlot");
+        }
+
         [HttpGet]
         public IActionResult SelectSaveSlot()
         {
