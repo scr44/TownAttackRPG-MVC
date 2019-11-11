@@ -6,12 +6,14 @@ using TownAttackRPG.Models.Effects;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using TownAttackRPG.Models.Professions;
+using TownAttackRPG.Models.Professions.DefaultProfessions;
 
 namespace TownAttackRPG.Models.Actors
 {
     public abstract class Actor
     {
-        public Actor(string name)
+        public Actor(string name, Profession prof=null)
         {
             Name = name;
         }

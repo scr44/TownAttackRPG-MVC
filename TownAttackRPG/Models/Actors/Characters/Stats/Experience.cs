@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,10 +7,11 @@ namespace TownAttackRPG.Models.Actors.Characters.Stats
 {
     public class Experience
     {
-        public Experience()
-        {
+        //public Experience()
+        //{
 
-        }
+        //}
+        [JsonConstructor]
         public Experience(Character character, int initLvl = 1)
         {
             AttachedCharacter = character;

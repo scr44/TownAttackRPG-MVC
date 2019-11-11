@@ -11,110 +11,66 @@
         "$id": "3",
         "$type": "TownAttackRPG.Models.Actors.Characters.Character, TownAttackRPG",
         "ArmorPiercing": 0.0,
-        "FirstName": "Guinevere",
-        "LastName": "Guinevere",
+        "FirstName": "Eric",
+        "LastName": "Eric",
         "Profession": {
-          "$type": "TownAttackRPG.Models.Professions.DefaultProfessions.Knight, TownAttackRPG",
+          "$type": "TownAttackRPG.Models.Professions.DefaultProfessions.Blacksmith, TownAttackRPG",
           "StartingSkills": [
-            {
-              "$id": "4",
-              "$type": "TownAttackRPG.Models.Skills.Techniques.Swords.DoubleSlash, TownAttackRPG",
-              "FullDescrip": "Two-handed Knightly Sword Technique: Attack twice, dealing 15.6 slashing damage each time.",
-              "Self": {
-                "$ref": "3"
-              },
-              "SkillName": "Double Slash",
-              "ShortDescrip": "Make two slashes in quick succession.",
-              "SkillTags": [
-                "Sword",
-                "Technique",
-                "Two-Handed",
-                "Physical",
-                "Attack"
-              ],
-              "SkillProfessionReqs": [
-                "Knight"
-              ],
-              "Skill2HReq": true,
-              "SkillStatReqs": {
-                "STR": 5,
-                "DEX": 5
-              },
-              "SkillEquipmentTagReqs": [
-                "Sword"
-              ],
-              "MeetsSkillReqs": true,
-              "CooldownMax": 0,
-              "Cooldown": 0,
-              "SPCost": 5,
-              "Ready": true,
-              "HasEnoughSP": true
-            },
+            null,
             null,
             null,
             null,
             null,
             null
           ],
-          "Title": "Knight",
-          "Gender": "Female",
-          "ProfessionSummary": "Knights are masters of the longsword clad in sturdy plate armor; but they often neglect their academic studies in favor of drinking and skirt-chasing.",
-          "BaseHealth": 20,
+          "Title": "Blacksmith",
+          "Gender": "Male",
+          "ProfessionSummary": "The town blacksmith is incredibly strong and knows all the weaknesses of every kind of armor, but slow and gruff.",
+          "BaseHealth": 40,
           "BaseStamina": 20,
-          "BaseStaminaRegen": 15.0,
+          "BaseStaminaRegen": 10.0,
           "StartingAttributesDict": {
-            "STR": 7,
-            "DEX": 7,
+            "STR": 9,
+            "DEX": 2,
             "SKL": 7,
-            "APT": 2,
+            "APT": 3,
             "FOR": 6,
-            "CHA": 4
+            "CHA": 3
           },
           "StartingTalentsDict": {
             "Medicine": 0,
-            "Explosives": 0,
-            "Veterancy": 2,
+            "Explosives": 1,
+            "Veterancy": 0,
             "Bestiary": 0,
-            "Engineering": 0,
+            "Engineering": 3,
             "History": 0
           },
           "StartingInventoryList": [
             {
-              "$id": "5",
+              "$id": "4",
               "ItemID": 0,
               "ItemName": "Coins",
               "ItemDescrip": "",
               "Value": 1,
               "Weight": 0.0,
               "MaxStackSize": 5000,
-              "StackSize": 800
-            },
-            {
-              "$id": "6",
-              "ItemID": 1,
-              "ItemName": "Memento",
-              "ItemDescrip": "A trinket to commemorate a victorious battle long ago.",
-              "Value": 20,
-              "Weight": 2.0,
-              "MaxStackSize": 250,
-              "StackSize": 1
+              "StackSize": 1200
             }
           ],
           "StartingEquipmentDict": {
             "MainHand": {
-              "$id": "7",
+              "$id": "5",
               "EquipmentTags": [
-                "Sword",
-                "Weapon",
-                "Can2H"
+                "None",
+                "Hand"
               ],
               "Condition": 100.0,
               "WeaponStats": {
                 "accuracy": 0.95,
-                "parryChance": 0.15,
-                "slashMultiplier": 15.0,
-                "pierceMultiplier": 20.0,
-                "crushMultiplier": 5.0,
+                "parryChance": 0.0,
+                "slashMultiplier": 0.0,
+                "pierceMultiplier": 0.0,
+                "crushMultiplier": 1.0,
                 "critChance": 0.05,
                 "critMultiplier": 1.5,
                 "armorPiercing": 0.0
@@ -129,11 +85,7 @@
               "CharmStats": {
                 "staminaBonus": 0.0
               },
-              "ReqStats": {
-                "STR": 6.0,
-                "DEX": 6.0,
-                "SKL": 6.0
-              },
+              "ReqStats": {},
               "ValidSlots": {
                 "MainHand": true,
                 "OffHand": true,
@@ -141,19 +93,61 @@
                 "Charm 1": false,
                 "Charm 2": false
               },
-              "ItemID": 3,
-              "ItemName": "Longsword",
-              "ItemDescrip": "A versatile weapon. Good damage, with a wide variety of attack techniques for any situation.",
-              "Value": 1000,
-              "Weight": 8.0,
+              "ItemID": 1,
+              "ItemName": "Bare Hand",
+              "ItemDescrip": "An empty hand. Can punch and throw items.",
+              "Value": 0,
+              "Weight": 0.0,
               "MaxStackSize": 1,
               "StackSize": 1
             },
             "OffHand": {
-              "$id": "8",
+              "$id": "6",
               "EquipmentTags": [
                 "None",
                 "Hand"
+              ],
+              "Condition": 100.0,
+              "WeaponStats": {
+                "accuracy": 0.95,
+                "parryChance": 0.0,
+                "slashMultiplier": 0.0,
+                "pierceMultiplier": 0.0,
+                "crushMultiplier": 1.0,
+                "critChance": 0.05,
+                "critMultiplier": 1.5,
+                "armorPiercing": 0.0
+              },
+              "ArmorStats": {
+                "healthBonus": 0.0,
+                "blockChance": 0.0,
+                "slashPROT": 0.0,
+                "piercePROT": 0.0,
+                "crushPROT": 0.0
+              },
+              "CharmStats": {
+                "staminaBonus": 0.0
+              },
+              "ReqStats": {},
+              "ValidSlots": {
+                "MainHand": true,
+                "OffHand": true,
+                "Body": false,
+                "Charm 1": false,
+                "Charm 2": false
+              },
+              "ItemID": 1,
+              "ItemName": "Bare Hand",
+              "ItemDescrip": "An empty hand. Can punch and throw items.",
+              "Value": 0,
+              "Weight": 0.0,
+              "MaxStackSize": 1,
+              "StackSize": 1
+            },
+            "Body": {
+              "$id": "7",
+              "EquipmentTags": [
+                "None"
               ],
               "Condition": 100.0,
               "WeaponStats": {
@@ -179,71 +173,23 @@
               "ReqStats": {},
               "ValidSlots": {
                 "MainHand": false,
-                "OffHand": true,
-                "Body": false,
-                "Charm 1": false,
-                "Charm 2": false
-              },
-              "ItemID": 2,
-              "ItemName": "Two-handing",
-              "ItemDescrip": "",
-              "Value": 0,
-              "Weight": 0.0,
-              "MaxStackSize": 1,
-              "StackSize": 1
-            },
-            "Body": {
-              "$id": "9",
-              "EquipmentTags": [
-                "Heavy",
-                "Armor",
-                "Metal"
-              ],
-              "Condition": 100.0,
-              "WeaponStats": {
-                "accuracy": 0.0,
-                "parryChance": 0.0,
-                "slashMultiplier": 0.0,
-                "pierceMultiplier": 0.0,
-                "crushMultiplier": 0.0,
-                "critChance": 0.0,
-                "critMultiplier": 0.0,
-                "armorPiercing": 0.0
-              },
-              "ArmorStats": {
-                "healthBonus": 80.0,
-                "blockChance": 100.0,
-                "slashPROT": 0.8,
-                "piercePROT": 0.55,
-                "crushPROT": 0.7
-              },
-              "CharmStats": {
-                "staminaBonus": 0.0
-              },
-              "ReqStats": {
-                "STR": 6.0,
-                "FOR": 5.0
-              },
-              "ValidSlots": {
-                "MainHand": false,
                 "OffHand": false,
                 "Body": true,
                 "Charm 1": false,
                 "Charm 2": false
               },
-              "ItemID": 8,
-              "ItemName": "Plate Armor",
-              "ItemDescrip": "A complete set of plate armor. Renders the wearer nearly impervious to slashing attacks, though heavy crushing blows can still injure, and skilled opponents can pierce the weak points.",
-              "Value": 3000,
-              "Weight": 42.0,
+              "ItemID": 5,
+              "ItemName": "Naked",
+              "ItemDescrip": "Have some decency!",
+              "Value": 0,
+              "Weight": 0.0,
               "MaxStackSize": 1,
               "StackSize": 1
             },
             "Charm 1": {
-              "$id": "10",
+              "$id": "8",
               "EquipmentTags": [
-                "Charm",
-                "Jewelry"
+                "None"
               ],
               "Condition": 100.0,
               "WeaponStats": {
@@ -264,9 +210,7 @@
                 "crushPROT": 0.0
               },
               "CharmStats": {
-                "staminaBonus": 0.0,
-                "APT": 1.0,
-                "CHA": -1.0
+                "staminaBonus": 0.0
               },
               "ReqStats": {},
               "ValidSlots": {
@@ -276,16 +220,16 @@
                 "Charm 1": true,
                 "Charm 2": true
               },
-              "ItemID": 10,
-              "ItemName": "Lover's Locket",
-              "ItemDescrip": "A copper locket holding the picture of a long-departed lover. The lasting gloom of lessons learned.",
-              "Value": 500,
-              "Weight": 0.1,
+              "ItemID": 9,
+              "ItemName": "Unadorned",
+              "ItemDescrip": "Wearing no jewelry or charms in this slot.",
+              "Value": 0,
+              "Weight": 0.0,
               "MaxStackSize": 1,
               "StackSize": 1
             },
             "Charm 2": {
-              "$id": "11",
+              "$id": "9",
               "EquipmentTags": [
                 "None"
               ],
@@ -333,20 +277,16 @@
           "AttachedCharacter": {
             "$ref": "3"
           },
-          "WeightCapacity": 105.0,
-          "WeightLoad": 52.1,
+          "WeightCapacity": 135.0,
+          "WeightLoad": 0.0,
           "IsOverburdened": false,
           "Items": [
             {
-              "$ref": "5"
-            },
-            {
-              "$ref": "6"
+              "$ref": "4"
             }
           ],
           "ItemCounts": {
-            "Coins": 800,
-            "Memento": 1
+            "Coins": 1200
           }
         },
         "Equipment": {
@@ -357,71 +297,63 @@
             "AttachedCharacter": {
               "$ref": "3"
             },
-            "WeightCapacity": 105.0,
-            "WeightLoad": 52.1,
+            "WeightCapacity": 135.0,
+            "WeightLoad": 0.0,
             "IsOverburdened": false,
             "Items": [
               {
-                "$ref": "5"
-              },
-              {
-                "$ref": "6"
+                "$ref": "4"
               }
             ],
             "ItemCounts": {
-              "Coins": 800,
-              "Memento": 1
+              "Coins": 1200
             }
           },
           "Slot": {
             "MainHand": {
-              "$ref": "7"
+              "$ref": "5"
             },
             "OffHand": {
-              "$ref": "8"
+              "$ref": "6"
             },
             "Body": {
-              "$ref": "9"
+              "$ref": "7"
             },
             "Charm 1": {
-              "$ref": "10"
+              "$ref": "8"
             },
             "Charm 2": {
-              "$ref": "11"
+              "$ref": "9"
             }
           },
           "AllEquipmentTags": [
-            "Sword",
-            "Weapon",
-            "Can2H",
             "None",
             "Hand",
-            "Heavy",
-            "Armor",
-            "Metal",
-            "Charm",
-            "Jewelry",
+            "None",
+            "Hand",
+            "None",
+            "None",
             "None"
           ],
-          "Can2H": true,
-          "Is2H": true
+          "Can2H": false,
+          "Is2H": false
         },
         "Attributes": {
-          "$id": "12",
+          "$id": "10",
           "AttachedCharacter": {
             "$ref": "3"
           },
           "BaseValue": {
-            "STR": 7,
-            "DEX": 7,
+            "STR": 9,
+            "DEX": 2,
             "SKL": 7,
-            "APT": 2,
+            "APT": 3,
             "FOR": 6,
-            "CHA": 4
+            "CHA": 3
           },
           "ModdedValue": {
-            "STR": 7,
-            "DEX": 7,
+            "STR": 9,
+            "DEX": 2,
             "SKL": 7,
             "APT": 3,
             "FOR": 6,
@@ -429,32 +361,32 @@
           }
         },
         "Talents": {
-          "$id": "13",
+          "$id": "11",
           "AttachedCharacter": {
             "$ref": "3"
           },
           "BaseValue": {
             "Medicine": 0,
-            "Explosives": 0,
-            "Veterancy": 2,
+            "Explosives": 1,
+            "Veterancy": 0,
             "Bestiary": 0,
-            "Engineering": 0,
+            "Engineering": 3,
             "History": 0
           },
           "ModdedValue": {
             "Medicine": 0,
-            "Explosives": 0,
-            "Veterancy": 2,
+            "Explosives": 1,
+            "Veterancy": 0,
             "Bestiary": 0,
-            "Engineering": 0,
+            "Engineering": 3,
             "History": 0
           }
         },
         "HP": {
-          "Current": 100,
-          "Max": 100,
+          "Current": 40,
+          "Max": 40,
           "Percent": 100.0,
-          "Base": 20,
+          "Base": 40,
           "BaseRegen": 0.0,
           "IsAlive": true
         },
@@ -463,7 +395,7 @@
           "Max": 20,
           "Percent": 100.0,
           "Base": 20,
-          "BaseRegen": 15.0
+          "BaseRegen": 10.0
         },
         "XP": {
           "AttachedCharacter": {
@@ -480,11 +412,11 @@
           "EffectInstanceCount": {},
           "EffectDurations": {}
         },
-        "Name": "Guinevere",
-        "Gender": "Female",
-        "HisHer": "Her",
-        "HisHers": "Hers",
-        "HeShe": "She",
+        "Name": "Eric",
+        "Gender": "Male",
+        "HisHer": "His",
+        "HisHers": "His",
+        "HeShe": "He",
         "IsAlive": true,
         "Skillbar": {
           "Self": {
@@ -492,7 +424,46 @@
           },
           "Skills": [
             {
-              "$ref": "4"
+              "$id": "12",
+              "$type": "TownAttackRPG.Models.Skills.EmptySkill, TownAttackRPG",
+              "FullDescrip": "An empty skill slot",
+              "Self": {
+                "$ref": "3"
+              },
+              "SkillName": "Empty",
+              "ShortDescrip": "No skill equipped in this slot.",
+              "SkillTags": [],
+              "SkillProfessionReqs": null,
+              "Skill2HReq": false,
+              "SkillStatReqs": null,
+              "SkillEquipmentTagReqs": null,
+              "MeetsSkillReqs": true,
+              "CooldownMax": 0,
+              "Cooldown": 0,
+              "SPCost": 0,
+              "Ready": true,
+              "HasEnoughSP": true
+            },
+            {
+              "$id": "13",
+              "$type": "TownAttackRPG.Models.Skills.EmptySkill, TownAttackRPG",
+              "FullDescrip": "An empty skill slot",
+              "Self": {
+                "$ref": "3"
+              },
+              "SkillName": "Empty",
+              "ShortDescrip": "No skill equipped in this slot.",
+              "SkillTags": [],
+              "SkillProfessionReqs": null,
+              "Skill2HReq": false,
+              "SkillStatReqs": null,
+              "SkillEquipmentTagReqs": null,
+              "MeetsSkillReqs": true,
+              "CooldownMax": 0,
+              "Cooldown": 0,
+              "SPCost": 0,
+              "Ready": true,
+              "HasEnoughSP": true
             },
             {
               "$id": "14",
@@ -577,31 +548,10 @@
               "SPCost": 0,
               "Ready": true,
               "HasEnoughSP": true
-            },
-            {
-              "$id": "18",
-              "$type": "TownAttackRPG.Models.Skills.EmptySkill, TownAttackRPG",
-              "FullDescrip": "An empty skill slot",
-              "Self": {
-                "$ref": "3"
-              },
-              "SkillName": "Empty",
-              "ShortDescrip": "No skill equipped in this slot.",
-              "SkillTags": [],
-              "SkillProfessionReqs": null,
-              "Skill2HReq": false,
-              "SkillStatReqs": null,
-              "SkillEquipmentTagReqs": null,
-              "MeetsSkillReqs": true,
-              "CooldownMax": 0,
-              "Cooldown": 0,
-              "SPCost": 0,
-              "Ready": true,
-              "HasEnoughSP": true
             }
           ],
           "SkillNames": {
-            "1": "Double Slash",
+            "1": "Empty",
             "2": "Empty",
             "3": "Empty",
             "4": "Empty",
@@ -618,11 +568,11 @@
     },
     "StartingModuleIndex": 0,
     "ActiveModule": {
-      "$id": "19",
+      "$id": "18",
       "$type": "TownAttackRPG.Models.Scenarios.Tutorial.Dialogue.Tutorial_Dialogue_01_Welcome, TownAttackRPG",
       "Dialogue": [],
       "Responses": {
-        "$id": "20"
+        "$id": "19"
       },
       "Name": "Tutorial_Dialogue_01_Welcome",
       "PlayerParty": [
@@ -638,7 +588,7 @@
     },
     "Modules": [
       {
-        "$ref": "19"
+        "$ref": "18"
       }
     ]
   }

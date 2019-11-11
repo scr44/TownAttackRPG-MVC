@@ -41,21 +41,10 @@ namespace TownAttackRPG.DAL.DAOs.Json
                 {
                     TypeNameHandling = TypeNameHandling.Auto,
                     PreserveReferencesHandling = PreserveReferencesHandling.Objects,
+                    ObjectCreationHandling = ObjectCreationHandling.Reuse
                 });
                 gameData.SaveGameSlot = slot;
                 return gameData;
-            }
-        }
-
-        public void DeleteAllSaves(int userID)
-        {
-            for (int i=1;i<=3;i++)
-            {
-                string path = JsonFolderPath + $"/SaveGame{i}.json";
-                string wipe = @"{
-
-}";
-                File.WriteAllText(path, wipe);
             }
         }
     }

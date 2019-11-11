@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,8 +11,8 @@ namespace TownAttackRPG.Models.Scenarios
     abstract public class Scenario
     {
         public string Name { get; protected set; }
-
-        public List<Actor> PlayerParty { get; protected set; } = new List<Actor>() { null };
+        [JsonProperty]
+        public List<Actor> PlayerParty { get; private set; } = new List<Actor>();
         public Character PlayerCharacter => (Character)PlayerParty[0];
         public void UpdateScenarioParty()
         {

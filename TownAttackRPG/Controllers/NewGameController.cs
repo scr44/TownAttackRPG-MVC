@@ -25,6 +25,8 @@ namespace TownAttackRPG.Controllers
 
         public IActionResult Index()
         {
+            // TODO IMPORTANT: remove the data wipe here
+            SaveGameDAO.DeleteAllSaves(1);
             return RedirectToAction("SelectScenario");
         }
 
@@ -155,7 +157,7 @@ namespace TownAttackRPG.Controllers
             Scenario scenario = scenarioVM.Scenario;
 
             scenario.ActiveModule = scenario.Modules[scenario.StartingModuleIndex];
-            scenario.PlayerParty[0] = PlayerCharacter;
+            scenario.PlayerParty.Add(PlayerCharacter);
             scenario.UpdateModuleParty();
 
             GameData gameData = new GameData()

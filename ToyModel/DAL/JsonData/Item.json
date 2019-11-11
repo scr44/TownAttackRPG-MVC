@@ -1,0 +1,18 @@
+[
+  {
+    "ItemID": 0,
+    "ItemName": "Coins",
+    "ItemDescrip": "",
+    "Value": 1,
+    "Weight": 0.0,
+    "MaxStackSize": 5000
+  },
+  {
+    "ItemID": 1,
+    "ItemName": "Memento",
+    "ItemDescrip": "A trinket to commemorate a victorious battle long ago.",
+    "Value": 20,
+    "Weight": 2.0,
+    "MaxStackSize": 250
+  }
+]

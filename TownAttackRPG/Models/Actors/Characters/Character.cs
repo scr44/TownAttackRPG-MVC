@@ -8,16 +8,18 @@ using System.Collections.Generic;
 using System.Text;
 using TownAttackRPG.Models.Actors.SkillCollections;
 using TownAttackRPG.Models.Actors.ActorProperties;
+using Newtonsoft.Json;
 
 namespace TownAttackRPG.Models.Actors.Characters
 {
     public class Character : Actor
     {
-        public Character() : base("")
+        [JsonConstructor]
+        public Character(string name) : base(name)
         {
-
+            // just here for json serialization
         }
-        public Character(string name, Profession prof) : base(name)
+        public Character(string name, Profession prof) : base(name, prof)
         {
             Name = name;
             Gender = prof.Gender ?? "Male";
@@ -83,8 +85,8 @@ namespace TownAttackRPG.Models.Actors.Characters
         #endregion
 
         #region Attributes and Talents
-        public Attributes Attributes { get; private set; }
-        public Talents Talents { get; private set; }
+        public Attributes Attributes { get; set; }
+        public Talents Talents { get; set; }
         #endregion
 
         #region Health, Stamina, XP
@@ -184,6 +186,7 @@ namespace TownAttackRPG.Models.Actors.Characters
             string dmgMult = dmgType + "Multiplier";
             return EffectMod(dmgMult);
         }
+        [JsonIgnore]
         public Dictionary<string, double> DmgScaling
         {
             get
@@ -263,6 +266,7 @@ namespace TownAttackRPG.Models.Actors.Characters
             string dmgPROT = dmgType + "PROT";
             return EffectMod(dmgPROT);
         }
+        [JsonIgnore]
         public Dictionary<string, double> PROTScaling
         {
             get

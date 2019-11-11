@@ -14,7 +14,5 @@ namespace TownAttackRPG.DAL.Interfaces
         void SaveGame(int userID, int slot, GameData gameData);
 
         GameData LoadGame(int userID, int slot);
-
-        void DeleteAllSaves(int userID);
     }
 }
