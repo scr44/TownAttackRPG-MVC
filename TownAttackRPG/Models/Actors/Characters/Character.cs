@@ -13,10 +13,14 @@ namespace TownAttackRPG.Models.Actors.Characters
 {
     public class Character : Actor
     {
+        public Character() : base("")
+        {
+
+        }
         public Character(string name, Profession prof) : base(name)
         {
             Name = name;
-            Gender = prof.Gender;
+            Gender = prof.Gender ?? "Male";
             Profession = prof;
             Attributes = new Attributes(this, prof.StartingAttributesDict);
             Talents = new Talents(this, prof.StartingTalentsDict);

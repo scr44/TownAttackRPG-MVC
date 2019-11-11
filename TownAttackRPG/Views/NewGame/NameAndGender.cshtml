@@ -4,15 +4,17 @@
     string[] GenderOptions = new[] { "Male", "Female" };
 }
 
-<h1>NameAndGender</h1>
-
-<div class="game-window">
-    <form method="post" asp-action="NameAndGender">
-        <input type="text" asp-for="Name" placeholder="Enter your name." />
-        @foreach (var gender in GenderOptions)
-        {
-            <input type="radio" asp-for="Gender" value="@gender[0]" />@gender
-        }
-        <input type="submit" value="Next" />
-    </form>
-</div>
+<form class="name-and-gender-grid" method="post" asp-action="NameAndGender">
+    <input class="name-input" type="text" asp-for="Name" placeholder="Enter your name."/>
+    <div class="gender-radio-toggle">
+        <div class="male">
+            <label asp-for="Gender">Male</label>
+            <input type="radio" asp-for="Gender" value="M" />
+        </div>
+        <div class="female">
+            <label asp-for="Gender">Female</label>
+            <input type="radio" asp-for="Gender" value="F" />
+        </div>
+    </div>
+    <input class="next-button" type="submit" value="Next" />
+</form>

@@ -1,11 +1,12 @@
-﻿/* #region Default CSS */
+﻿
 
+/* #region Default CSS */
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
 }
 
 /* Sticky footer styles
@@ -45,16 +46,18 @@ html {
 body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
-    background-color: #090000;
+    /*background-color: #090000;*/
+    background: repeating-linear-gradient(0deg, saddlebrown, saddlebrown 4px, #090000 4px, #090000 20px);
 }
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  line-height: 60px; /* Vertically center the text there */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px; /* Vertically center the text there */
+    background-color: #090000;
 }
 /* #endregion */
 
@@ -107,6 +110,9 @@ body {
     justify-content: center;
     background-color: antiquewhite;
     height: 100%;
+    -moz-box-shadow: inset 0 10px 30px #000000;
+    -webkit-box-shadow: inset 0 10px 30px #000000;
+    box-shadow: inset 0 10px 30px #000000;
 }
 .menu-title {
     grid-area: title;
@@ -246,36 +252,64 @@ body {
     height: 100%;
     border: 0px;
     border-radius: 5px;
-    background-color: antiquewhite;
+    background-color: floralwhite;
+    padding: 0 0 0 0;
     display: grid;
-    grid-template-columns: 1fr 18fr 1fr;
-    grid-template-rows: 1fr 5fr 2fr 1fr 3fr 1fr;
+    grid-template-columns: 1fr 30fr 1fr;
+    grid-template-rows: .5fr 5fr 2fr 3fr;
     grid-template-areas: 
         ".     .    ." 
         ". cardpic  ."
         ". cardname ." 
-        ".     .    ." 
         ". cardtext ."
-        ".     .    ."
 }
 .scenario-card > img {
     grid-area: cardpic;
-    max-width: 270px;
+    max-width: 255px;
     justify-self: center;
+    border-radius: 10px;
 }
 .scenario-card > header {
     grid-area: cardname;
-    font-family: 'McLaren', cursive;
+    font-family: 'Press Start 2P', cursive;
     max-width: 277px;
-    font-size: 30pt;
+    font-size: 16pt;
+    padding-top: 10px;
 }
 .scenario-card > content {
     grid-area: cardtext;
-    font-family: 'McLaren', cursive;
-    font-size: 20pt;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 8pt;
     width: 100%;
     max-width: 277px;
+    border: solid saddlebrown 1px;
+    padding-top: 5px;
+    margin-bottom: 10px;
 }
 
 /*#endregion*/
 
+/*#region Name & Gender*/
+.name-and-gender-grid {
+    display: grid;
+    grid-template-rows: 1fr 3fr 3fr 1fr;
+    grid-template-columns: 1fr 4fr 1fr 4fr 1fr;
+    grid-template-areas:
+        ". . . . ."
+        ". name name name ."
+        ". gender gender gender ."
+        ". . next . .";
+}
+.name-input {
+    grid-area: name;
+    font-size: 30pt;
+}
+.next-button {
+    grid-area: next;
+}
+.gender-radio-toggle {
+    grid-area: gender;
+    /*Toggle CSS code: https://codepen.io/dsenneff/pen/ZoLVZW?editors=1100*/
+}
+
+/*#endregion*/
