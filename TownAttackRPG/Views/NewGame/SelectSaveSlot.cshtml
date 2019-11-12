@@ -2,35 +2,45 @@
 @{
     ViewData["Title"] = "SelectSaveSlot";
 }
-
-<h1>SelectSaveSlot</h1>
-
-<div class="game-window">
-    @foreach (var saveGame in Model.SaveList)
-    {
-        if (saveGame.ActiveScenario != null)
+<div class="card-deck-menu-grid">
+    <header class="card-deck-menu-title menu-title">SELECT SAVE SLOT</header>
+    <content class="card-deck">
+        @foreach (var saveGame in Model.SaveList)
         {
-            var pc = saveGame.ActiveScenario.PlayerCharacter;
+            if (saveGame.ActiveScenario != null)
+            {
+                var pc = saveGame.ActiveScenario.PlayerCharacter;
 
-            <form method="post" asp-action="SelectSaveSlot">
-                <input type="hidden" asp-for="Slot" value="@saveGame.SaveGameSlot" />
-                <button class="save-slot-card" type="submit">
-                    <header>Save Game @saveGame.SaveGameSlot</header>
-                    <content>Scenario: @saveGame.ActiveScenario.Name</content>
-                    <content>@pc.Name</content>
-                    <content>Lvl @pc.XP.Level @pc.Profession.Title</content>
-                </button>
-            </form>
+                <form method="post" asp-action="SelectSaveSlot">
+                    <input type="hidden" asp-for="Slot" value="@saveGame.SaveGameSlot" />
+                    <div class="card-backing">
+                        <div class="card-padding">
+                            <button class="save-slot-card" type="submit">
+                                <header>Save Game @saveGame.SaveGameSlot</header>
+                                <content>
+                                    <section class="scenario">Scenario: @saveGame.ActiveScenario.Name</section>
+                                    <section class="character-name">@pc.Name</section>
+                                    <section class="profession">Lvl @pc.XP.Level @pc.Profession.Title</section>
+                                </content>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            }
+            else
+            {
+                <form method="post" asp-action="SelectSaveSlot">
+                    <input type="hidden" asp-for="Slot" value="@saveGame.SaveGameSlot" />
+                    <div class="card-backing">
+                        <div class="card-padding">
+                            <button class="save-slot-card" type="submit">
+                                <header>Save Game @saveGame.SaveGameSlot</header>
+                                <content>Empty</content>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            }
         }
-        else
-        {
-            <form method="post" asp-action="SelectSaveSlot">
-                <input type="hidden" asp-for="Slot" value="@saveGame.SaveGameSlot" />
-                <button class="save-slot-card" type="submit">
-                    <header>Save Game @saveGame.SaveGameSlot</header>
-                    <content>Empty</content>
-                </button>
-            </form>
-        }
-    }
+    </content>
 </div>

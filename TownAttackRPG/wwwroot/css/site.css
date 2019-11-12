@@ -116,7 +116,7 @@ body {
 }
 .menu-title {
     grid-area: title;
-    font-size: 70pt;
+    font-size: 40pt;
     text-align: center;
     padding-top: 5%;
     font-family: 'Press Start 2P', cursive;
@@ -139,9 +139,10 @@ body {
     grid-area: title;
     justify-self: center;
     align-self: center;
-    background: -webkit-linear-gradient(#0044ff, #ff8e04);
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
+    font-size: 40pt;
+    font-family: 'Press Start 2P', cursive;
+    font-weight: 300;
+    text-align: center;
 }
 .splash-screen-start {
     grid-area: start;
@@ -191,7 +192,7 @@ body {
     height: 100%;
 }
 .main-menu-flexbox > form > button {
-    font-size: 30pt;
+    font-size: 20pt;
     padding: 0.2em .5em;
     margin: 0 0.3em 0.3em 0;
     border: 0;
@@ -287,6 +288,113 @@ body {
     margin-bottom: 10px;
 }
 
+/*#endregion*/
+
+/*#region Prof Card*/
+.profession-card {
+    height: 100%;
+    border: 0px;
+    border-radius: 5px;
+    background-color: floralwhite;
+    padding: 0 0 0 0;
+    display: grid;
+    grid-template-columns: 1fr 30fr 1fr;
+    grid-template-rows: 1fr 5fr;
+    grid-template-areas: 
+        ". cardname  ." 
+        ". content ." 
+}
+.profession-card > header {
+    grid-area: cardname;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 16pt;
+    padding-top: 10px;
+}
+
+.profession-card > content {
+    grid-area: content;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 8pt;
+    width: 100%;
+    border: solid saddlebrown 1px;
+    padding-top: 5px;
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-rows: 1fr 3fr 3fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "summary summary"
+        "att tal"
+        "equip items"
+}
+.profession-card > content > section {
+    padding-top: 5px;
+    border: 1px solid black;
+}
+.profession-card > content > section.summary {
+    grid-area: summary;
+}
+.profession-card > content > section.attributes {
+    grid-area: att;
+}
+.profession-card > content > section.talents {
+    grid-area: tal;
+}
+.profession-card > content > section.starting-equipment {
+    grid-area: equip;
+}
+.profession-card > content > section.starting-items {
+    grid-area: items;
+}
+/*#endregion*/
+
+/*#region Save Game Cards*/
+.save-slot-card {
+    height: 100%;
+    border: 0px;
+    border-radius: 5px;
+    background-color: floralwhite;
+    padding: 0 0 0 0;
+    display: grid;
+    grid-template-columns: 1fr 30fr 1fr;
+    grid-template-rows: 1fr 3fr;
+    grid-template-areas: 
+        ". cardname  ." 
+        ". content ."
+}
+.save-slot-card > header {
+    grid-area: cardname;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 16pt;
+    padding-top: 10px;
+}
+
+.save-slot-card > content {
+    grid-area: content;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 8pt;
+    width: 100%;
+    border: solid saddlebrown 1px;
+    padding-top: 5px;
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-rows: 1fr 2fr 2fr;
+    grid-template-areas: 
+        "scenario"
+        "name"
+        "profession"
+}
+.save-slot-card > content > section.scenario {
+    grid-area: scenario;
+}
+
+.save-slot-card > content > section.character-name {
+    grid-area: name;
+}
+
+.save-slot-card > content > section.profession {
+    grid-area: profession;
+}
 /*#endregion*/
 
 /*#region Name & Gender*/

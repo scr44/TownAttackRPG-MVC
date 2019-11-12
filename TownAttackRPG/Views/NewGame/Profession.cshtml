@@ -2,53 +2,57 @@
 @{
     ViewData["Title"] = "Profession";
 }
-
-<h1>Profession</h1>
-
-<div class="game-window">
-    @foreach(var prof in Model.ProfessionList)
-    { 
-        <form method="post" asp-action="Profession">
-            <input type="hidden" asp-for="ProfessionChoice" value="@prof.Title" />
-            <button class="profession-card @(prof.Title == "Pony" ? "secret-card" : "")" type="submit">
-                <h1 class="profession-title">@prof.Title</h1>
-                <p class="profession-summary">@prof.ProfessionSummary</p>
-                <div class="profession-starting-stats">
-                    <section class="attributes">
-                        <header>Attributes</header>
-                        @foreach (var att in prof.StartingAttributesDict)
-                        {
-                            <p>@(att.Key): @att.Value</p>
-                        }
-                    </section>
-                    <section class="talents">
-                        <header>Talents</header>
-                        @foreach (var tal in prof.StartingTalentsDict)
-                        {
-                            <p>@(tal.Key): @tal.Value</p>
-                        }
-                    </section>
-                    <section class="starting-equipment">
-                        <header>Starting Equipment</header>
-                        @foreach (var item in prof.StartingEquipmentDict)
-                        {
-                            if (!item.Value.EquipmentTags.Contains("None"))
-                            {
-                                <p>@item.Value.ItemName</p>
-                            }
-                        }
-                    </section>
-                    <section class="starting-items">
-                        <header>Starting Items</header>
-                        @foreach (var item in prof.StartingInventoryList)
-                        {
-                            <p>@(item.ItemName): @("x"+item.StackSize)</p>
-                        }
-                    </section>
+<div class="card-deck-menu-grid">
+    <header class="card-deck-menu-title menu-title">SELECT PROFESSION</header>
+    <content class="card-deck">
+        @foreach (var prof in Model.ProfessionList)
+        {
+            <form method="post" asp-action="Profession">
+                <input type="hidden" asp-for="ProfessionChoice" value="@prof.Title" />
+                <div class="card-backing">
+                    <div class="card-padding">
+                        <button class="profession-card @(prof.Title == "Pony" ? "secret-card" : "")" type="submit">
+                            <header class="profession-title">@(prof.Title != "Pony" ? prof.Title : "Secret Class")</header>
+                            <content>
+                                <section class="summary">
+                                @prof.ProfessionSummary
+                                </section>
+                                <section class="attributes">
+                                    <header>Attributes</header>
+                                    @foreach (var att in prof.StartingAttributesDict)
+                                    {
+                                        <p>@(att.Key): @att.Value</p>
+                                    }
+                                </section>
+                                <section class="talents">
+                                    <header>Talents</header>
+                                    @foreach (var tal in prof.StartingTalentsDict)
+                                    {
+                                        <p>@(tal.Key): @tal.Value</p>
+                                    }
+                                </section>
+                                <section class="starting-equipment">
+                                    <header>Starting Equipment</header>
+                                    @foreach (var item in prof.StartingEquipmentDict)
+                                    {
+                                        if (!item.Value.EquipmentTags.Contains("None"))
+                                        {
+                                            <p>@item.Value.ItemName</p>
+                                        }
+                                    }
+                                </section>
+                                <section class="starting-items">
+                                    <header>Starting Items</header>
+                                    @foreach (var item in prof.StartingInventoryList)
+                                    {
+                                        <p>@(item.ItemName): @("x" + item.StackSize)</p>
+                                    }
+                                </section>
+                            </content>
+                        </button>
+                    </div>
                 </div>
-                <p class="profession-tips"></p>
-            </button>
-        </form>
-    }
-    
+            </form>
+        }
+    </content>
 </div>
