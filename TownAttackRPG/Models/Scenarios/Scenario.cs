@@ -12,7 +12,7 @@ namespace TownAttackRPG.Models.Scenarios
     {
         public string Name { get; protected set; }
         [JsonProperty]
-        public List<Actor> PlayerParty { get; private set; } = new List<Actor>();
+        public List<Actor> PlayerParty { get; set; } = new List<Actor>();
         public Character PlayerCharacter => (Character)PlayerParty[0];
         public void UpdateScenarioParty()
         {

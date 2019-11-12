@@ -21,6 +21,10 @@ namespace TownAttackRPG.DAL.DAOs.Json
         {
             gameData.SaveGameSlot = slot;
 
+            /// 
+            gameData.Atomize(); /// deconstruct the ActiveScenario object
+            ///
+
             string path = JsonFolderPath + $"/SaveGame{slot}.json";
             string jsonData = JsonConvert.SerializeObject(gameData, new JsonSerializerSettings()
             { 
@@ -43,6 +47,19 @@ namespace TownAttackRPG.DAL.DAOs.Json
                     PreserveReferencesHandling = PreserveReferencesHandling.Objects,
                 });
                 gameData.SaveGameSlot = slot;
+
+                if (gameData.ScenarioName is null)
+                {
+                    gameData.ActiveScenario = null;
+                }
+                else
+                {
+                    ///
+                    gameData.DeAtomize(); /// construct the ActiveScenario object
+                    ///
+                }
+
+
                 return gameData;
             }
         }

@@ -11,7 +11,9 @@ namespace TownAttackRPG.Models.Scenarios
         public string Name { get; protected set; }
         public List<Actor> PlayerParty { get; set; }
         public Character PlayerCharacter => (Character)PlayerParty[0];
-        public List<Actor> Allies { get; protected set; } = new List<Actor>();
-        public List<Actor> Enemies { get; protected set; } = new List<Actor>();
+        public List<Actor> Allies { get; set; } = new List<Actor>();
+        public List<Actor> Enemies { get; set; } = new List<Actor>();
+
+        public int TurnNumber { get; set; }
     }
 }

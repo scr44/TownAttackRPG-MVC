@@ -2,26 +2,69 @@
   "$id": "1",
   "UserID": 1,
   "SaveGameSlot": 1,
-  "ActiveScenario": {
+  "ActiveScenario": null,
+  "ScenarioName": "Tutorial",
+  "ModuleName": "Tutorial_Dialogue_01_Welcome",
+  "ModuleTurnNumber": 0,
+  "PlayerPartyIsCharacter": {
     "$id": "2",
-    "$type": "TownAttackRPG.Models.Scenarios.Campaign.Tutorial.Tutorial, TownAttackRPG",
-    "Name": "Tutorial",
-    "PlayerParty": [
-      {
-        "$id": "3",
+    "0": true
+  },
+  "PlayerPartyNames": {
+    "$id": "3",
+    "0": "Guinevere"
+  },
+  "PlayerPartyProfessions": {
+    "$id": "4",
+    "0": "Knight"
+  },
+  "PlayerPartyGenders": {
+    "$id": "5",
+    "0": "Female"
+  },
+  "PlayerPartyAttributes": {
+    "$id": "6",
+    "0": {
+      "$id": "7",
+      "STR": 7,
+      "DEX": 7,
+      "SKL": 7,
+      "APT": 2,
+      "FOR": 6,
+      "CHA": 4
+    }
+  },
+  "PlayerPartyTalents": {
+    "$id": "8",
+    "0": {
+      "$id": "9",
+      "Medicine": 0,
+      "Explosives": 0,
+      "Veterancy": 2,
+      "Bestiary": 0,
+      "Engineering": 0,
+      "History": 0
+    }
+  },
+  "PlayerPartySkillbars": {
+    "$id": "10",
+    "0": {
+      "$id": "11",
+      "Self": {
+        "$id": "12",
         "$type": "TownAttackRPG.Models.Actors.Characters.Character, TownAttackRPG",
         "ArmorPiercing": 0.0,
         "FirstName": "Guinevere",
-        "LastName": "Guinevere",
+        "LastName": "",
         "Profession": {
           "$type": "TownAttackRPG.Models.Professions.DefaultProfessions.Knight, TownAttackRPG",
           "StartingSkills": [
             {
-              "$id": "4",
+              "$id": "13",
               "$type": "TownAttackRPG.Models.Skills.Techniques.Swords.DoubleSlash, TownAttackRPG",
               "FullDescrip": "Two-handed Knightly Sword Technique: Attack twice, dealing 15.6 slashing damage each time.",
               "Self": {
-                "$ref": "3"
+                "$ref": "12"
               },
               "SkillName": "Double Slash",
               "ShortDescrip": "Make two slashes in quick succession.",
@@ -63,24 +106,14 @@
           "BaseStamina": 20,
           "BaseStaminaRegen": 15.0,
           "StartingAttributesDict": {
-            "STR": 7,
-            "DEX": 7,
-            "SKL": 7,
-            "APT": 2,
-            "FOR": 6,
-            "CHA": 4
+            "$ref": "7"
           },
           "StartingTalentsDict": {
-            "Medicine": 0,
-            "Explosives": 0,
-            "Veterancy": 2,
-            "Bestiary": 0,
-            "Engineering": 0,
-            "History": 0
+            "$ref": "9"
           },
           "StartingInventoryList": [
             {
-              "$id": "5",
+              "$id": "14",
               "ItemID": 0,
               "ItemName": "Coins",
               "ItemDescrip": "",
@@ -90,7 +123,7 @@
               "StackSize": 800
             },
             {
-              "$id": "6",
+              "$id": "15",
               "ItemID": 1,
               "ItemName": "Memento",
               "ItemDescrip": "A trinket to commemorate a victorious battle long ago.",
@@ -102,7 +135,7 @@
           ],
           "StartingEquipmentDict": {
             "MainHand": {
-              "$id": "7",
+              "$id": "16",
               "EquipmentTags": [
                 "Sword",
                 "Weapon",
@@ -150,7 +183,7 @@
               "StackSize": 1
             },
             "OffHand": {
-              "$id": "8",
+              "$id": "17",
               "EquipmentTags": [
                 "None",
                 "Hand"
@@ -193,7 +226,7 @@
               "StackSize": 1
             },
             "Body": {
-              "$id": "9",
+              "$id": "18",
               "EquipmentTags": [
                 "Heavy",
                 "Armor",
@@ -240,7 +273,7 @@
               "StackSize": 1
             },
             "Charm 1": {
-              "$id": "10",
+              "$id": "19",
               "EquipmentTags": [
                 "Charm",
                 "Jewelry"
@@ -285,7 +318,7 @@
               "StackSize": 1
             },
             "Charm 2": {
-              "$id": "11",
+              "$id": "20",
               "EquipmentTags": [
                 "None"
               ],
@@ -331,17 +364,17 @@
         "CharacterTags": [],
         "Inventory": {
           "AttachedCharacter": {
-            "$ref": "3"
+            "$ref": "12"
           },
           "WeightCapacity": 105.0,
           "WeightLoad": 52.1,
           "IsOverburdened": false,
           "Items": [
             {
-              "$ref": "5"
+              "$ref": "14"
             },
             {
-              "$ref": "6"
+              "$ref": "15"
             }
           ],
           "ItemCounts": {
@@ -351,21 +384,21 @@
         },
         "Equipment": {
           "AttachedCharacter": {
-            "$ref": "3"
+            "$ref": "12"
           },
           "AttachedInventory": {
             "AttachedCharacter": {
-              "$ref": "3"
+              "$ref": "12"
             },
             "WeightCapacity": 105.0,
             "WeightLoad": 52.1,
             "IsOverburdened": false,
             "Items": [
               {
-                "$ref": "5"
+                "$ref": "14"
               },
               {
-                "$ref": "6"
+                "$ref": "15"
               }
             ],
             "ItemCounts": {
@@ -375,19 +408,19 @@
           },
           "Slot": {
             "MainHand": {
-              "$ref": "7"
+              "$ref": "16"
             },
             "OffHand": {
-              "$ref": "8"
+              "$ref": "17"
             },
             "Body": {
-              "$ref": "9"
+              "$ref": "18"
             },
             "Charm 1": {
-              "$ref": "10"
+              "$ref": "19"
             },
             "Charm 2": {
-              "$ref": "11"
+              "$ref": "20"
             }
           },
           "AllEquipmentTags": [
@@ -407,17 +440,12 @@
           "Is2H": true
         },
         "Attributes": {
-          "$id": "12",
+          "$id": "21",
           "AttachedCharacter": {
-            "$ref": "3"
+            "$ref": "12"
           },
           "BaseValue": {
-            "STR": 7,
-            "DEX": 7,
-            "SKL": 7,
-            "APT": 2,
-            "FOR": 6,
-            "CHA": 4
+            "$ref": "7"
           },
           "ModdedValue": {
             "STR": 7,
@@ -429,17 +457,12 @@
           }
         },
         "Talents": {
-          "$id": "13",
+          "$id": "22",
           "AttachedCharacter": {
-            "$ref": "3"
+            "$ref": "12"
           },
           "BaseValue": {
-            "Medicine": 0,
-            "Explosives": 0,
-            "Veterancy": 2,
-            "Bestiary": 0,
-            "Engineering": 0,
-            "History": 0
+            "$ref": "9"
           },
           "ModdedValue": {
             "Medicine": 0,
@@ -467,7 +490,7 @@
         },
         "XP": {
           "AttachedCharacter": {
-            "$ref": "3"
+            "$ref": "12"
           },
           "Current": 0,
           "Needed": 510,
@@ -487,159 +510,256 @@
         "HeShe": "She",
         "IsAlive": true,
         "Skillbar": {
-          "Self": {
-            "$ref": "3"
-          },
-          "Skills": [
-            {
-              "$ref": "4"
-            },
-            {
-              "$id": "14",
-              "$type": "TownAttackRPG.Models.Skills.EmptySkill, TownAttackRPG",
-              "FullDescrip": "An empty skill slot",
-              "Self": {
-                "$ref": "3"
-              },
-              "SkillName": "Empty",
-              "ShortDescrip": "No skill equipped in this slot.",
-              "SkillTags": [],
-              "SkillProfessionReqs": null,
-              "Skill2HReq": false,
-              "SkillStatReqs": null,
-              "SkillEquipmentTagReqs": null,
-              "MeetsSkillReqs": true,
-              "CooldownMax": 0,
-              "Cooldown": 0,
-              "SPCost": 0,
-              "Ready": true,
-              "HasEnoughSP": true
-            },
-            {
-              "$id": "15",
-              "$type": "TownAttackRPG.Models.Skills.EmptySkill, TownAttackRPG",
-              "FullDescrip": "An empty skill slot",
-              "Self": {
-                "$ref": "3"
-              },
-              "SkillName": "Empty",
-              "ShortDescrip": "No skill equipped in this slot.",
-              "SkillTags": [],
-              "SkillProfessionReqs": null,
-              "Skill2HReq": false,
-              "SkillStatReqs": null,
-              "SkillEquipmentTagReqs": null,
-              "MeetsSkillReqs": true,
-              "CooldownMax": 0,
-              "Cooldown": 0,
-              "SPCost": 0,
-              "Ready": true,
-              "HasEnoughSP": true
-            },
-            {
-              "$id": "16",
-              "$type": "TownAttackRPG.Models.Skills.EmptySkill, TownAttackRPG",
-              "FullDescrip": "An empty skill slot",
-              "Self": {
-                "$ref": "3"
-              },
-              "SkillName": "Empty",
-              "ShortDescrip": "No skill equipped in this slot.",
-              "SkillTags": [],
-              "SkillProfessionReqs": null,
-              "Skill2HReq": false,
-              "SkillStatReqs": null,
-              "SkillEquipmentTagReqs": null,
-              "MeetsSkillReqs": true,
-              "CooldownMax": 0,
-              "Cooldown": 0,
-              "SPCost": 0,
-              "Ready": true,
-              "HasEnoughSP": true
-            },
-            {
-              "$id": "17",
-              "$type": "TownAttackRPG.Models.Skills.EmptySkill, TownAttackRPG",
-              "FullDescrip": "An empty skill slot",
-              "Self": {
-                "$ref": "3"
-              },
-              "SkillName": "Empty",
-              "ShortDescrip": "No skill equipped in this slot.",
-              "SkillTags": [],
-              "SkillProfessionReqs": null,
-              "Skill2HReq": false,
-              "SkillStatReqs": null,
-              "SkillEquipmentTagReqs": null,
-              "MeetsSkillReqs": true,
-              "CooldownMax": 0,
-              "Cooldown": 0,
-              "SPCost": 0,
-              "Ready": true,
-              "HasEnoughSP": true
-            },
-            {
-              "$id": "18",
-              "$type": "TownAttackRPG.Models.Skills.EmptySkill, TownAttackRPG",
-              "FullDescrip": "An empty skill slot",
-              "Self": {
-                "$ref": "3"
-              },
-              "SkillName": "Empty",
-              "ShortDescrip": "No skill equipped in this slot.",
-              "SkillTags": [],
-              "SkillProfessionReqs": null,
-              "Skill2HReq": false,
-              "SkillStatReqs": null,
-              "SkillEquipmentTagReqs": null,
-              "MeetsSkillReqs": true,
-              "CooldownMax": 0,
-              "Cooldown": 0,
-              "SPCost": 0,
-              "Ready": true,
-              "HasEnoughSP": true
-            }
-          ],
-          "SkillNames": {
-            "1": "Double Slash",
-            "2": "Empty",
-            "3": "Empty",
-            "4": "Empty",
-            "5": "Empty",
-            "6": "Empty"
-          }
+          "$ref": "11"
         },
         "XPReward": 0,
         "LootDrops": null
-      }
-    ],
-    "PlayerCharacter": {
-      "$ref": "3"
-    },
-    "StartingModuleIndex": 0,
-    "ActiveModule": {
-      "$id": "19",
-      "$type": "TownAttackRPG.Models.Scenarios.Tutorial.Dialogue.Tutorial_Dialogue_01_Welcome, TownAttackRPG",
-      "Dialogue": [],
-      "Responses": {
-        "$id": "20"
       },
-      "Name": "Tutorial_Dialogue_01_Welcome",
-      "PlayerParty": [
+      "Skills": [
         {
-          "$ref": "3"
+          "$ref": "13"
+        },
+        {
+          "$id": "23",
+          "$type": "TownAttackRPG.Models.Skills.EmptySkill, TownAttackRPG",
+          "FullDescrip": "An empty skill slot",
+          "Self": {
+            "$ref": "12"
+          },
+          "SkillName": "Empty",
+          "ShortDescrip": "No skill equipped in this slot.",
+          "SkillTags": [],
+          "SkillProfessionReqs": null,
+          "Skill2HReq": false,
+          "SkillStatReqs": null,
+          "SkillEquipmentTagReqs": null,
+          "MeetsSkillReqs": true,
+          "CooldownMax": 0,
+          "Cooldown": 0,
+          "SPCost": 0,
+          "Ready": true,
+          "HasEnoughSP": true
+        },
+        {
+          "$id": "24",
+          "$type": "TownAttackRPG.Models.Skills.EmptySkill, TownAttackRPG",
+          "FullDescrip": "An empty skill slot",
+          "Self": {
+            "$ref": "12"
+          },
+          "SkillName": "Empty",
+          "ShortDescrip": "No skill equipped in this slot.",
+          "SkillTags": [],
+          "SkillProfessionReqs": null,
+          "Skill2HReq": false,
+          "SkillStatReqs": null,
+          "SkillEquipmentTagReqs": null,
+          "MeetsSkillReqs": true,
+          "CooldownMax": 0,
+          "Cooldown": 0,
+          "SPCost": 0,
+          "Ready": true,
+          "HasEnoughSP": true
+        },
+        {
+          "$id": "25",
+          "$type": "TownAttackRPG.Models.Skills.EmptySkill, TownAttackRPG",
+          "FullDescrip": "An empty skill slot",
+          "Self": {
+            "$ref": "12"
+          },
+          "SkillName": "Empty",
+          "ShortDescrip": "No skill equipped in this slot.",
+          "SkillTags": [],
+          "SkillProfessionReqs": null,
+          "Skill2HReq": false,
+          "SkillStatReqs": null,
+          "SkillEquipmentTagReqs": null,
+          "MeetsSkillReqs": true,
+          "CooldownMax": 0,
+          "Cooldown": 0,
+          "SPCost": 0,
+          "Ready": true,
+          "HasEnoughSP": true
+        },
+        {
+          "$id": "26",
+          "$type": "TownAttackRPG.Models.Skills.EmptySkill, TownAttackRPG",
+          "FullDescrip": "An empty skill slot",
+          "Self": {
+            "$ref": "12"
+          },
+          "SkillName": "Empty",
+          "ShortDescrip": "No skill equipped in this slot.",
+          "SkillTags": [],
+          "SkillProfessionReqs": null,
+          "Skill2HReq": false,
+          "SkillStatReqs": null,
+          "SkillEquipmentTagReqs": null,
+          "MeetsSkillReqs": true,
+          "CooldownMax": 0,
+          "Cooldown": 0,
+          "SPCost": 0,
+          "Ready": true,
+          "HasEnoughSP": true
+        },
+        {
+          "$id": "27",
+          "$type": "TownAttackRPG.Models.Skills.EmptySkill, TownAttackRPG",
+          "FullDescrip": "An empty skill slot",
+          "Self": {
+            "$ref": "12"
+          },
+          "SkillName": "Empty",
+          "ShortDescrip": "No skill equipped in this slot.",
+          "SkillTags": [],
+          "SkillProfessionReqs": null,
+          "Skill2HReq": false,
+          "SkillStatReqs": null,
+          "SkillEquipmentTagReqs": null,
+          "MeetsSkillReqs": true,
+          "CooldownMax": 0,
+          "Cooldown": 0,
+          "SPCost": 0,
+          "Ready": true,
+          "HasEnoughSP": true
         }
       ],
-      "PlayerCharacter": {
-        "$ref": "3"
-      },
-      "Allies": [],
-      "Enemies": []
-    },
-    "Modules": [
+      "SkillNames": {
+        "1": "Double Slash",
+        "2": "Empty",
+        "3": "Empty",
+        "4": "Empty",
+        "5": "Empty",
+        "6": "Empty"
+      }
+    }
+  },
+  "PlayerPartyInventoryItems": {
+    "$id": "28",
+    "0": [
       {
-        "$ref": "19"
+        "$ref": "14"
+      },
+      {
+        "$ref": "15"
       }
     ]
+  },
+  "PlayerPartyEquipmentSlots": {
+    "$id": "29",
+    "0": {
+      "$id": "30",
+      "MainHand": {
+        "$ref": "16"
+      },
+      "OffHand": {
+        "$ref": "17"
+      },
+      "Body": {
+        "$ref": "18"
+      },
+      "Charm 1": {
+        "$ref": "19"
+      },
+      "Charm 2": {
+        "$ref": "20"
+      }
+    }
+  },
+  "PlayerPartyActiveEffects": {
+    "$id": "31",
+    "0": {
+      "$id": "32",
+      "EffectList": [],
+      "EffectInstanceCount": {},
+      "EffectDurations": {}
+    }
+  },
+  "PlayerPartyHpSp": {
+    "$id": "33",
+    "0": [
+      100,
+      20
+    ]
+  },
+  "PlayerPartyXpLvl": {
+    "$id": "34",
+    "0": [
+      0,
+      1
+    ]
+  },
+  "AllyPartyIsCharacter": {
+    "$id": "35"
+  },
+  "AllyPartyNames": {
+    "$id": "36"
+  },
+  "AllyPartyProfessions": {
+    "$id": "37"
+  },
+  "AllyPartyGenders": {
+    "$id": "38"
+  },
+  "AllyPartyAttributes": {
+    "$id": "39"
+  },
+  "AllyPartyTalents": {
+    "$id": "40"
+  },
+  "AllyPartySkillbars": {
+    "$id": "41"
+  },
+  "AllyPartyInventoryItems": {
+    "$id": "42"
+  },
+  "AllyPartyEquipmentSlots": {
+    "$id": "43"
+  },
+  "AllyPartyActiveEffects": {
+    "$id": "44"
+  },
+  "AllyPartyHpSp": {
+    "$id": "45"
+  },
+  "AllyPartyXpLvl": {
+    "$id": "46"
+  },
+  "EnemyPartyIsCharacter": {
+    "$id": "47"
+  },
+  "EnemyPartyNames": {
+    "$id": "48"
+  },
+  "EnemyPartyProfessions": {
+    "$id": "49"
+  },
+  "EnemyPartyGenders": {
+    "$id": "50"
+  },
+  "EnemyPartyAttributes": {
+    "$id": "51"
+  },
+  "EnemyPartyTalents": {
+    "$id": "52"
+  },
+  "EnemyPartySkillbars": {
+    "$id": "53"
+  },
+  "EnemyPartyInventoryItems": {
+    "$id": "54"
+  },
+  "EnemyPartyEquipmentSlots": {
+    "$id": "55"
+  },
+  "EnemyPartyActiveEffects": {
+    "$id": "56"
+  },
+  "EnemyPartyHpSp": {
+    "$id": "57"
+  },
+  "EnemyPartyXpLvl": {
+    "$id": "58"
   }
 }

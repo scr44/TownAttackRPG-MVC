@@ -64,7 +64,7 @@ namespace TownAttackRPG.Models.Actors.Characters
                 }
                 else
                 {
-                    return Name;
+                    return "";
                 }
             }
         }

@@ -20,7 +20,7 @@ namespace TownAttackRPG.Models.Actors.Characters.Stats
 
         public Character AttachedCharacter { get; }
 
-        public int Current { get; private set; } = 0;
+        public int Current { get; set; } = 0;
         public int Needed
         {
             get

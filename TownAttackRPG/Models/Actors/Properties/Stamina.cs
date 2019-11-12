@@ -37,7 +37,7 @@ namespace TownAttackRPG.Models.Actors.Characters.Stats
         private Character Character { get; } = null;
         #endregion
 
-        public int Current { get; private set; } = 0;
+        public int Current { get; set; } = 0;
         public int Max
         {
             get
