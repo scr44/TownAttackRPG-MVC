@@ -92,27 +92,35 @@ body {
 
 /* #region Game Layout CSS*/
 .game-window {
-    height: 80vh;
+    /*min-height: 80vh;*/
     margin-left: 10vw;
     margin-right: 10vw;
     margin-top: auto;
     margin-bottom: auto;
     padding: 15px;
     background-color: saddlebrown;
+    
 }
 .game-window-padding {
     padding: 10px;
     height: 100%;
     width: 100%;
 }
+.game-window-crt-shadow {
+    border-radius: 10px;
+    justify-content: center;
+    background-color: transparent;
+    height: 100%;
+    -moz-box-shadow: inset 0 10px 30px #000000;
+    -webkit-box-shadow: inset 0 10px 30px #000000;
+    box-shadow: inset 0 10px 30px #000000;
+}
 .game-content {
     border-radius: 10px;
     justify-content: center;
     background-color: antiquewhite;
     height: 100%;
-    -moz-box-shadow: inset 0 10px 30px #000000;
-    -webkit-box-shadow: inset 0 10px 30px #000000;
-    box-shadow: inset 0 10px 30px #000000;
+    z-index: 1;
 }
 .menu-title {
     grid-area: title;
@@ -182,16 +190,28 @@ body {
         ". menu  .";
     height: 100%;
 }
-.main-menu-flexbox {
+.main-menu-options-grid{
     grid-area: menu;
-    display: flex;
-    flex-direction: column;
+    display: grid;
     justify-content: space-around;
     align-content: stretch;
     text-align: center;
     height: 100%;
+    grid-template-areas:
+        "new"
+        "load"
+        "options";
 }
-.main-menu-flexbox > form > button {
+.main-menu-options-grid > form > button.newgame-button {
+    grid-area: new;
+}
+.main-menu-options-grid > form > button.loadgame-button {
+    grid-area: load;
+}
+.main-menu-options-grid > form > button.options-button {
+    grid-area: options;
+}
+.main-menu-options-grid > form > button {
     font-size: 20pt;
     padding: 0.2em .5em;
     margin: 0 0.3em 0.3em 0;
@@ -206,7 +226,7 @@ body {
     background-color: antiquewhite;
     color: black;
 }
-.main-menu-flexbox > form > button:hover {
+.main-menu-options-grid > form > button:hover {
     background-color: black;
     color: antiquewhite;
 }
