@@ -25,8 +25,6 @@ namespace TownAttackRPG.Controllers
 
         public IActionResult Index()
         {
-            // TODO IMPORTANT: remove the data wipe here
-            SaveGameDAO.DeleteAllSaves(1);
             return RedirectToAction("SelectScenario");
         }
 

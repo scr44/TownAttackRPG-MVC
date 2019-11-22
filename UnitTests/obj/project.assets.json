@@ -8345,23 +8345,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\SRoy\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Steve\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\SRoy\\Documents\\git\\TownAttackRPG\\UnitTests\\UnitTests.csproj",
+      "projectUniqueName": "E:\\Program Files (x86)\\Microsoft Visual Studio\\git\\TownAttackRPG\\UnitTests\\UnitTests.csproj",
       "projectName": "UnitTests",
-      "projectPath": "C:\\Users\\SRoy\\Documents\\git\\TownAttackRPG\\UnitTests\\UnitTests.csproj",
-      "packagesPath": "C:\\Users\\SRoy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\SRoy\\Documents\\git\\TownAttackRPG\\UnitTests\\obj\\",
+      "projectPath": "E:\\Program Files (x86)\\Microsoft Visual Studio\\git\\TownAttackRPG\\UnitTests\\UnitTests.csproj",
+      "packagesPath": "C:\\Users\\Steve\\.nuget\\packages\\",
+      "outputPath": "E:\\Program Files (x86)\\Microsoft Visual Studio\\git\\TownAttackRPG\\UnitTests\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\SRoy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Steve\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8374,8 +8370,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "C:\\Users\\SRoy\\Documents\\git\\TownAttackRPG\\TownAttackRPG\\TownAttackRPG.csproj": {
-              "projectPath": "C:\\Users\\SRoy\\Documents\\git\\TownAttackRPG\\TownAttackRPG\\TownAttackRPG.csproj"
+            "E:\\Program Files (x86)\\Microsoft Visual Studio\\git\\TownAttackRPG\\TownAttackRPG\\TownAttackRPG.csproj": {
+              "projectPath": "E:\\Program Files (x86)\\Microsoft Visual Studio\\git\\TownAttackRPG\\TownAttackRPG\\TownAttackRPG.csproj"
             }
           }
         }
@@ -8409,10 +8405,16 @@
           }
         },
         "imports": [
-          "net461"
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
         ],
         "assetTargetFallback": true,
-        "warn": true
+        "warn": true,
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

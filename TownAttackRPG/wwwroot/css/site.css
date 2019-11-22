@@ -1,5 +1,4 @@
 ﻿
-
 /* #region Default CSS */
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
@@ -9,8 +8,6 @@ a.navbar-brand {
     word-break: break-all;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
 html {
   font-size: 14px;
 }
@@ -36,18 +33,16 @@ button.accept-policy {
   line-height: inherit;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
 html {
   position: relative;
   min-height: 100%;
 }
-
-body {
-    /* Margin bottom by footer height */
-    margin-bottom: 60px;
-    /*background-color: #090000;*/
-    background: repeating-linear-gradient(0deg, saddlebrown, saddlebrown 4px, #090000 4px, #090000 20px);
+body > header {
+    background-color: #090000;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+nav .container {
+    background-color: #090000;
 }
 .footer {
     position: absolute;
@@ -61,52 +56,29 @@ body {
 }
 /* #endregion */
 
-/*#region aspect ratio code I totally stole off the internet*/
-[style*="--aspect-ratio"] > :first-child {
-    width: 100%;
+/* #region Layout*/
+body {
+    background: repeating-linear-gradient(0deg, saddlebrown, saddlebrown 4px, #090000 4px, #090000 20px);
 }
-
-[style*="--aspect-ratio"] > img {
-    height: auto;
-}
-
-@supports (--custom:property) {
-    [style*="--aspect-ratio"] {
-        position: relative;
-    }
-
-        [style*="--aspect-ratio"]::before {
-            content: "";
-            display: block;
-            padding-bottom: calc(100% / (var(--aspect-ratio)));
-        }
-
-        [style*="--aspect-ratio"] > :first-child {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-        }
-}
-/*#endregion*/
-
-/* #region Game Layout CSS*/
 .game-window {
-    /*min-height: 80vh;*/
-    margin-left: 10vw;
-    margin-right: 10vw;
-    margin-top: auto;
-    margin-bottom: auto;
-    padding: 15px;
-    background-color: saddlebrown;
     
+    height: 80vmin;
+    width: 60vmax;
+    padding-top: 5vmin;
+    padding-bottom: 5vmin;
+    padding-left: 5vmax;
+    padding-right: 5vmin;
 }
-.game-window-padding {
-    padding: 10px;
-    height: 100%;
+.crt-container {
     width: 100%;
+    height: 100%;
+    padding: 10px;
+    /*padding-bottom: 75%;*/
+    position: relative;
+    background-color: saddlebrown;
+    font-family: 'Press Start 2P', cursive;
 }
-.game-window-crt-shadow {
+.crt-vignette {
     border-radius: 10px;
     justify-content: center;
     background-color: transparent;
@@ -115,19 +87,11 @@ body {
     -webkit-box-shadow: inset 0 10px 30px #000000;
     box-shadow: inset 0 10px 30px #000000;
 }
-.game-content {
-    border-radius: 10px;
-    justify-content: center;
-    background-color: antiquewhite;
+.crt-screen {
     height: 100%;
-    z-index: 1;
-}
-.menu-title {
-    grid-area: title;
-    font-size: 40pt;
-    text-align: center;
-    padding-top: 5%;
-    font-family: 'Press Start 2P', cursive;
+    width: 100%;
+    border-radius: 10px;
+    background-color: antiquewhite;
 }
 /* #endregion */
 
@@ -147,10 +111,9 @@ body {
     grid-area: title;
     justify-self: center;
     align-self: center;
-    font-size: 40pt;
-    font-family: 'Press Start 2P', cursive;
+    /*font-size: 40pt;
     font-weight: 300;
-    text-align: center;
+    text-align: center;*/
 }
 .splash-screen-start {
     grid-area: start;
@@ -158,7 +121,7 @@ body {
     align-self: flex-start;
 }
 .splash-screen-start > button {
-    font-size: 30pt;
+    /*font-size: 30pt;*/
     padding: 0.2em .5em;
     margin: 0 0.3em 0.3em 0;
     border: 0;
